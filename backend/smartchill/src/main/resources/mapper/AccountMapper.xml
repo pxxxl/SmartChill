@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.minjer.smartchill.mapper.AccountMapper">
+    <resultMap id="AccountResultMap" type="com.minjer.smartchill.entity.dto.Account">
+        <result column="user_id" property="userId"/>
+        <result column="username" property="userName"/>
+        <result column="password" property="password"/>
+        <result column="salt" property="salt"/>
+    </resultMap>
+    <insert id="createAccount">
+        insert into administrator(username, password, salt)
+        values (#{userName}, #{password}, #{salt})
+    </insert>
+
+    <select id="checkAccount" resultType="java.lang.Boolean">
+        select count(*)
+        from administrator
+        where username = #{userName} and password = #{password}
+    </select>
+    <select id="getSalt" resultType="java.lang.String">
+        select salt
+        from administrator
+        where username = #{userName}
+    </select>
+    <select id="findByUserName" resultType="com.minjer.smartchill.entity.dto.Account">
+        select *
+        from administrator
+        where username = #{userName}
+    </select>
+
+
+</mapper>
