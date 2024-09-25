@@ -35,3 +35,4 @@ build/
 /mvnw
 /mvnw.cmd
 /logs/
+/src/main/resources/application-dev.yml

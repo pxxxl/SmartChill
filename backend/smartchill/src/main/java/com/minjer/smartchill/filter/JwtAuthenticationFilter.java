@@ -33,7 +33,7 @@ public class JwtAuthenticationFilter implements Filter {
             return;
         }
 
-        // 2. 获取请求头中的token
+        // 3. 获取请求头中的token
         String token = request.getHeader("Authorization");
         if (token == null) {
             // 重写response
@@ -46,7 +46,7 @@ public class JwtAuthenticationFilter implements Filter {
         token = token.replace("Bearer ", "");
         log.info("token: {}", token);
 
-        // 3. 提取token并校验
+        // 4. 提取token并校验
         try {
             if (JwtUtil.isTokenExpired(token)) {
                 response.setStatus(ResultEnum.AUTH_ERROR.getCode());
@@ -61,7 +61,7 @@ public class JwtAuthenticationFilter implements Filter {
             return;
         }
 
-        // 4. 放行
+        // 5. 放行
         filterChain.doFilter(request, response);
     }
 }

@@ -15,6 +15,7 @@ public enum ResultEnum {
     ACCOUNT_NOT_EXIST(1001, "账号不存在"),
     PASSWORD_ERROR(1002, "密码错误"),
     ACCOUNT_EXIST(1003, "账号已存在"),
+    UPLOAD_FAILED(1004, "文件上传失败"),
     ;
 
 
