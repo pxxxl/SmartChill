@@ -1,0 +1,19 @@
+name: bottle
+channels:
+  - defaults
+  - conda-forge
+  - pytorch
+  - ultralytics
+
+dependencies:
+  - python=3.9
+  - pip
+  - numpy
+  - opencv  # OpenCV 用于图像处理
+  - pytorch  # PyTorch 是 YOLOv8 的后端
+  - torchvision  # PyTorch 的计算机视觉库
+  - cudatoolkit=11.3  # 如果你的机器支持 GPU，加速推理
+  - pip:
+      - ultralytics  # YOLOv8 库，通过 pip 安装最新版本
+      - deep_sort_realtime
+      - flask
