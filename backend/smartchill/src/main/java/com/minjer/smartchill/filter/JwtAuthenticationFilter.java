@@ -44,7 +44,6 @@ public class JwtAuthenticationFilter implements Filter {
         }
 
         token = token.replace("Bearer ", "");
-        log.info("token: {}", token);
 
         // 4. 提取token并校验
         try {
