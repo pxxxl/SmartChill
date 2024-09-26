@@ -2,6 +2,7 @@ import cv2
 import numpy as np
 from ultralytics import YOLO
 from deep_sort_realtime.deepsort_tracker import DeepSort
+from log_util import log, init_logger
 # 初始化 YOLOv8 模型
 model = YOLO('yolov8l.pt')  # 使用 YOLOv8 的预训练模型
 

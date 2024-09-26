@@ -20,6 +20,6 @@ def extract_frames(video_path, output_dir, fps=1):
         print(f"Error during frame extraction: {e}")
 
 # 示例用法
-video_file = r'C:/Data/Projects/Syn/SmartChill/detection/database/mp4/test2.mp4'
-output_folder = r'C:\Data\Projects\Syn\SmartChill\detection\database\imgs\test2'
+video_file = r'C:/Data/Projects/Syn/SmartChill/detection/database/mp4/test.mp4'
+output_folder = r'C:\Data\Projects\Syn\SmartChill\detection\database\imgs\test'
 extract_frames(video_file, output_folder, fps=5)  # 每秒提取一帧

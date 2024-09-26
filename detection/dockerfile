@@ -1,0 +1,26 @@
+FROM continuumio/miniconda3
+
+# 设置工作目录
+WORKDIR /app
+
+# 将 environment.yml 文件复制到容器中
+COPY environment.yml /app/environment.yml
+
+# 安装 ffmpeg 和 opencv 依赖
+RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
+
+# 使用 Conda 创建名为 "bottle" 的环境并安装依赖
+RUN conda env create -f environment.yml
+
+# 激活 bottle 环境并将其作为默认环境
+RUN echo "source activate bottle" > ~/.bashrc
+ENV PATH /opt/conda/envs/bottle/bin:$PATH
+
+# 将应用程序源代码复制到容器中
+COPY src/ /app/src/
+
+# 暴露应用程序端口（可根据需要修改端口号）
+EXPOSE 5987
+
+# 指定容器启动时的程序入口
+CMD ["python", "/app/src/app.py"]
