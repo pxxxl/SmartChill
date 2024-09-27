@@ -5,13 +5,14 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Account implements Serializable {
-    private Integer userId;
-    private String userName;
-    private String password;
-    private String salt;
+public class Drink implements Serializable {
+    private Integer id;
+    private String name;
+    private BigDecimal price;
+    private String image;
 }
