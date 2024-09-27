@@ -19,7 +19,16 @@ def extract_frames(video_path, output_dir, fps=1):
     except subprocess.CalledProcessError as e:
         print(f"Error during frame extraction: {e}")
 
-# 示例用法
-video_file = r'C:/Data/Projects/Syn/SmartChill/detection/database/mp4/test.mp4'
-output_folder = r'C:\Data\Projects\Syn\SmartChill\detection\database\imgs\test'
+import argparse
+
+parser = argparse.ArgumentParser(description='Extract frames from a video file')
+parser.add_argument('-i', '--video_file', type=str, help='Path to the video file', required=True)
+parser.add_argument('-o', '--output_folder', type=str, help='Path to the output folder', required=True)
+args = parser.parse_args()
+
+video_file = args.video_file
+output_folder = args.output_folder
+
 extract_frames(video_file, output_folder, fps=5)  # 每秒提取一帧
+
+# usage: -i ./mp4/test.mp4 -o ./img/test
