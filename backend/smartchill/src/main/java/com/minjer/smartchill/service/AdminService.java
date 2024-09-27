@@ -18,4 +18,6 @@ public interface AdminService {
     Result putBasicDrinkInfo(Drink drink);
 
     Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos);
+
+    void updateDrinkOnSale();
 }

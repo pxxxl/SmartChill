@@ -1,5 +1,6 @@
 package com.minjer.smartchill.service.impl;
 
+import com.minjer.smartchill.constant.RedisConstant;
 import com.minjer.smartchill.entity.dto.Account;
 import com.minjer.smartchill.entity.dto.Drink;
 import com.minjer.smartchill.entity.pojo.DrinkCountInfo;
@@ -13,15 +14,17 @@ import com.minjer.smartchill.mapper.DeviceMapper;
 import com.minjer.smartchill.mapper.DrinkMapper;
 import com.minjer.smartchill.mapper.TemperatureMapper;
 import com.minjer.smartchill.service.AdminService;
+import com.minjer.smartchill.service.RedisService;
 import com.minjer.smartchill.utils.AccountUtil;
 import com.minjer.smartchill.utils.JwtUtil;
+import com.minjer.smartchill.utils.TemperatureUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +43,7 @@ public class AdminServiceImpl implements AdminService {
     private DrinkMapper drinkMapper;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisService redisService;
 
     @Autowired
     private TemperatureMapper temperatureMapper;
@@ -155,7 +158,7 @@ public class AdminServiceImpl implements AdminService {
     @Transactional
     public Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos) {
         // 从缓存中获取在售饮品信息
-        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisTemplate.opsForValue().get("drinkList");
+        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get("drinkList");
 
         // 对提交的补货信息逐个检查
         for (DrinkCountInfo drinkCountInfo : drinkCountInfos) {
@@ -209,9 +212,35 @@ public class AdminServiceImpl implements AdminService {
 
         // 4. 更新缓存
         if (drinkOnSales != null) {
-            redisTemplate.opsForValue().set("drinkList", drinkOnSales);
+            redisService.set(RedisConstant.DRINK_LIST, drinkOnSales);
         }
 
         return Result.success();
     }
+
+    @Override
+    public void updateDrinkOnSale() {
+        // 1. 从缓存中获取在售饮品信息
+        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
+
+        // 2. 更新饮品信息
+        if (drinkOnSales != null) {
+            // 2.1 更新最新的温度
+            BigDecimal temperature = temperatureMapper.getRecentInsideTemperature();
+
+            ArrayList<DrinkOnSale> newDrinkOnSales = new ArrayList<>();
+
+            for (DrinkOnSale drinkOnSale : drinkOnSales) {
+                long minutes = Duration.between(drinkOnSale.getCreateTime(), LocalDateTime.now()).toMinutes();
+                BigDecimal updateTemperature = BigDecimal.valueOf(TemperatureUtil.calCoolingTemperature(drinkOnSale.getCreateTemperature().doubleValue(), temperature.doubleValue(), minutes));
+                drinkOnSale.setTemperature(updateTemperature);
+                newDrinkOnSales.add(drinkOnSale);
+            }
+
+            // 2.2. 更新缓存
+            redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
+            redisService.set(RedisConstant.DRINK_UPDATE_TIME, LocalDateTime.now());
+        }
+    }
+
 }
