@@ -2,3 +2,4 @@
 *.pt
 .vscode/
 *.png
+detection/database/img/*
