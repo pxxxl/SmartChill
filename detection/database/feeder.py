@@ -1,9 +1,13 @@
 import os
 import requests
+import argparse
 
-# 目录路径
-script_dir = os.path.dirname(os.path.abspath(__file__))
-image_directory = os.path.join(script_dir, 'imgs/test')
+# get the image dir path as -i argument
+parser = argparse.ArgumentParser(description='Extract frames from a video file')
+parser.add_argument('-i', '--image_dir', type=str, help='Path to the image directory', required=True)
+args = parser.parse_args()
+
+image_directory = args.image_dir
 
 # API地址
 url = "http://127.0.0.1:5987/img"  # 替换为实际API地址

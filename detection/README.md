@@ -36,7 +36,7 @@ docker push cozardez/bottle_det:latest
 
 启动容器：（/path/to/your/config.json是你的配置文件路径）
 ```bash
-docker run -p 5987:5987 cozardez/bottle_det:latest -v /path/to/your/config.json:/app/src/config.json -v /path/to/your/detection.log:/app/src/detection.log
+docker run -p 5987:5987 cozardez/bottle_det:latest -v ./config.json:/app/src/config.json -v ./detection.log:/app/src/detection.log
 ```
 
 配置文件的有效格式如下：
@@ -92,20 +92,19 @@ docker run -p 5987:5987 cozardez/bottle_det:latest -v /path/to/your/config.json:
 先把mp4文件切分成图片
 ```bash
 cd detection
-mkdir database/imgs
-python database/split.py
+python database/split.py -i ./database/mp4/test.mp4 -o ./database/img/test
 ```
 
 此时 database/imgs 文件夹里会有图片文件夹。
 
 然后启动服务
 ```bash
-docker run -p 5987:5987 cozardez/bottle_det:latest -v /path/to/your/config.json:/app/src/config.json -v /path/to/your/detection.log:/app/src/detection.log
+docker run -p 5987:5987 cozardez/bottle_det:latest -v ./config.json:/app/src/config.json -v ./detection.log:/app/src/detection.log
 ```
 
 然后运行测试脚本
 ```bash
-python database/feeder.py
+python database/feeder.py -i ./database/img/test
 ```
 
 你会看到输出：

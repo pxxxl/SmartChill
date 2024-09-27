@@ -1,5 +1,4 @@
 # detection gitignore
 *.pt
 .vscode/
-*.mp4
 *.png
