@@ -23,11 +23,11 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (res) => {
-    if (res.data.code === 1 || res.data.code === 2) {
+    if (res.data.code !== 200) {
         Message.error(res?.data.message || '服务异常')
-      return Promise.reject(res.data)
+      return Promise.reject(res)
     } else {
-      return res
+      return res.data
     }
   },
   (err) => {

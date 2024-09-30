@@ -22,10 +22,10 @@
         />
       </a-form-item>
       <div style="display: flex; justify-content: space-between;margin-bottom: 10px;">
-        <a-button type="primary" @click="handleLogin" style="width: 100%;">
+        <a-button type="primary" @click="handleLogin" style="width: 100%;" :loading="isLoading">
           登录
         </a-button>
-        <a-button type="outline" @click="handleRegister" style="width: 100%;margin-left: 10px;">
+        <a-button type="outline" @click="handleRegister" style="width: 100%;margin-left: 10px;" :loading="isLoading">
           注册
         </a-button>
       </div>
@@ -77,16 +77,13 @@ const handleLogin = async () => {
     try {
       isLoading.value = true
       const res = await loginAPI(form)
-      isLoading.value = false
-      if (res.data.code === 0) {
-        Message.success('登录成功！')
-        userStore.setToken(res.data.Authorization)
-        router.push('/device')
-      } else {
-        Message.error('用户名或密码错误！')
-      }
+      Message.success('登录成功！')
+      userStore.setToken(res.data.Authorization)
+      router.push('/device')
     } catch (error) {
-      Message.error('登录失败！')
+      console.log(error)
+    } finally {
+      isLoading.value = false
     }
   }
 }
@@ -102,15 +99,12 @@ const handleRegister = async () => {
   else{
     try {
       isLoading.value = true
-      const res = await registerAPI(form)
-      isLoading.value = false
-      if (res.data.code === 0) {
-        Message.success('注册成功！')
-      } else {
-        Message.error('注册失败！')
-      }
+      await registerAPI(form)
+      Message.success('注册成功！')
     } catch (error) {
-      Message.error('注册失败！')
+      console.log(error)
+    } finally {
+      isLoading.value = false
     }
   }
 }

@@ -4,7 +4,7 @@
         <div class="drink-info-title">饮品基本信息</div>
         <a-button type="primary" @click='handleDrink(false)' style="margin-left: 20px;">添加饮品</a-button>
     </div>
-    <a-table :columns="columns" :data="tableData" row-key="name" page-position="bottom">
+    <a-table :columns="columns" :data="tableData" row-key="name" page-position="bottom" :loading="isLoading">
         <template #columns>
             <a-table-column title="名称" data-index="name"></a-table-column>
             <a-table-column title="图片">
@@ -22,7 +22,7 @@
         </template>
     </a-table>
     <a-modal v-model:visible="visible" :title="title" @cancel="handleCancel" :on-before-ok="submit" :closable="false">
-        <a-form :model="form" ref="formRef" :rules="rules">
+        <a-form :model="form" ref="formRef" :rules="rules" :disabled="isLoading">
         <a-form-item field="name" label="名称">
             <a-input v-model="form.name" />
         </a-form-item>
@@ -36,7 +36,7 @@
             :show-file-list="false"
             :on-before-upload="beforeUpload"
             >
-                <a-button type="outline" style="display: block">选择图片</a-button>
+                <a-button type="outline" style="display: block" :loading="isLoading">选择图片</a-button>
             </a-upload>
             <imgCropper
             ref="imgCropperRef"
@@ -67,13 +67,17 @@ import { getDrinkBaseInfoAPI, setDrinkBaseInfoAPI } from '@/api/drink';
 import { uploadAPI } from '@/api/common';
 
 const tableData = ref([]);
+const isLoading = ref(false);
 
 if(isMock) {
     tableData.value = mockDrinkBaseInfo;
 }
 else{
+    isLoading.value = true;
     getDrinkBaseInfoAPI().then(res => {
         tableData.value = res.data.drinks;
+    }).finally(() => {
+        isLoading.value = false;
     })
 }
 const rules = {
@@ -194,6 +198,7 @@ const submit = async () => {
         const formData = new FormData();
         formData.append('file' , form.image);
         if(!isMock) {
+            isLoading.value = true;
             const uploadRes = await uploadAPI(formData);
             form.image = uploadRes.data.url;
             await setDrinkBaseInfoAPI(form);
@@ -207,11 +212,16 @@ const submit = async () => {
     } catch (error) {
         console.log(error);     
         return false
+    } finally {
+        isLoading.value = false;
     }
 };
 const refreshData = () => {
+    isLoading.value = true;
     getDrinkBaseInfoAPI().then(res => {
         tableData.value = res.data.drinks;
+    }).finally(() => {
+        isLoading.value = false;
     })
 };
 </script>

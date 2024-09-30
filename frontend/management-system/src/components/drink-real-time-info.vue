@@ -42,6 +42,7 @@ import { isMock, mockDrinkRealtimeInfo, mockDrinkBaseInfo } from '@/mock/mock'
 import { getDrinkBaseInfoAPI, getDrinkRealTimeInfoAPI, supplyAPI } from '@/api/drink';
 import { Message } from '@arco-design/web-vue';
 
+const isLoading = ref(false);
 const columns = ref([
 {
     title: '名称',
@@ -93,20 +94,35 @@ const form = reactive({
 });
 
 const refreshData = async () => {
-    tableData.value = await getDrinkRealTimeInfoAPI(page.value, pageSize);
+    isLoading.value = true;
+    try {
+        tableData.value = await getDrinkRealTimeInfoAPI(page.value, pageSize);
+    } catch (error) {
+        console.log(error);
+    } finally {
+        isLoading.value = false;
+    }
 };
 
 if(isMock) {
     tableData.value = mockDrinkRealtimeInfo;
     drinkBaseInfo.value = mockDrinkBaseInfo;
+    totalRef.value = mockDrinkRealtimeInfo.length;
 }
 else{
     onMounted(async () => {
-        const realtimeInfoRes = await getDrinkRealTimeInfoAPI(page.value, pageSize);
-        tableData.value = realtimeInfoRes.data.drinks;
-        totalRef.value = realtimeInfoRes.data.total;
-        const baseInfoRes = await getDrinkBaseInfoAPI();
-        drinkBaseInfo.value = baseInfoRes.data.drinks;
+        isLoading.value = true;
+        try {
+            const realtimeInfoRes = await getDrinkRealTimeInfoAPI(page.value, pageSize);
+            tableData.value = realtimeInfoRes.data.drinks;
+            totalRef.value = realtimeInfoRes.data.total;
+            const baseInfoRes = await getDrinkBaseInfoAPI();
+            drinkBaseInfo.value = baseInfoRes.data.drinks;
+        } catch (error) {
+            console.log(error);
+        } finally {
+            isLoading.value = false;
+        }
     })
 }
 const supply = () => {
@@ -121,6 +137,7 @@ const handleCancel = () => {
     visible.value = false;
 };
 const submit = async () => {
+    isLoading.value = true;
     try {
         const validRes = await formRef.value.validate()
         if(validRes !== undefined) {
@@ -138,6 +155,8 @@ const submit = async () => {
     } catch (error) {
         console.log(error);     
         return false
+    } finally {
+        isLoading.value = false;
     }
 };
 const onChange = (value) => {
