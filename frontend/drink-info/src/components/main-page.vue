@@ -31,7 +31,7 @@ import { showLoadingToast, closeToast,Empty } from 'vant';
 
 const currentTemperature = ref();
 const drinks = ref([]);
-const page = ref(0);
+const page = ref(1);
 const pageSize = 4;
 const isLoading = ref(false);
 

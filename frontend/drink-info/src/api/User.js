@@ -5,6 +5,6 @@ export const getTemperature = () => {
 }
 
 export const getDrinkInfo = (page, pageSize) => {
-    return request.get(`/user/drink?page=${page}&pageSize=${pageSize}`)
+    return request.get(`/user/drink?page=${page}&pagesize=${pageSize}`)
 }
 

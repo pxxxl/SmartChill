@@ -8,7 +8,7 @@
       ref="formRef"
     >
       <div class="logo-container">
-        <img src="../assets/logo-2.png" alt="logo" class="logo" />
+        <img src="../assets/logo-2.jpg" alt="logo" class="logo" />
       </div>
       <a-form-item label="用户名" field="username">
         <a-input v-model="form.username" placeholder="请输入用户名" />
