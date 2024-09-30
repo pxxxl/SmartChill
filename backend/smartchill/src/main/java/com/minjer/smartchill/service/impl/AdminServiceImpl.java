@@ -9,10 +9,7 @@ import com.minjer.smartchill.entity.vo.DeviceInfo;
 import com.minjer.smartchill.entity.vo.DrinkOnSale;
 import com.minjer.smartchill.enums.ResultEnum;
 import com.minjer.smartchill.exception.BaseException;
-import com.minjer.smartchill.mapper.AccountMapper;
-import com.minjer.smartchill.mapper.DeviceMapper;
-import com.minjer.smartchill.mapper.DrinkMapper;
-import com.minjer.smartchill.mapper.TemperatureMapper;
+import com.minjer.smartchill.mapper.*;
 import com.minjer.smartchill.service.AdminService;
 import com.minjer.smartchill.service.RedisService;
 import com.minjer.smartchill.utils.AccountUtil;
@@ -48,6 +45,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private TemperatureMapper temperatureMapper;
+
+    @Autowired
+    private TransactionMapper transactionMapper;
 
     @Override
     public Result login(String username, String password) {
@@ -157,6 +157,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional
+    // TODO 向交易表中插入交易信息
     public Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos) {
         // 从缓存中获取在售饮品信息
         ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get("drinkList");
@@ -209,6 +210,9 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSale.setCreateTemperature(temperature);
 
             drinkOnSales.add(drinkOnSale);
+
+            // 4. 更新交易表
+             transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getCount(), LocalDateTime.now());
         }
 
         // 4. 更新缓存
@@ -235,6 +239,12 @@ public class AdminServiceImpl implements AdminService {
             for (DrinkOnSale drinkOnSale : drinkOnSales) {
                 long minutes = Duration.between(drinkOnSale.getCreateTime(), LocalDateTime.now()).toMinutes();
                 BigDecimal updateTemperature = BigDecimal.valueOf(TemperatureUtil.calCoolingTemperature(drinkOnSale.getCreateTemperature().doubleValue(), temperature.doubleValue(), minutes));
+
+                // 更新饮料基本信息
+                Drink drink = drinkMapper.getDrinkById(drinkOnSale.getDrinkId());
+                drinkOnSale.setImage(drink.getImage());
+                drinkOnSale.setPrice(drink.getPrice());
+
                 // 将温度限定为一位小数
                 updateTemperature = updateTemperature.setScale(1, RoundingMode.HALF_UP);
                 drinkOnSale.setTemperature(updateTemperature);

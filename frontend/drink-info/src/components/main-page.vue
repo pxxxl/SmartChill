@@ -58,11 +58,16 @@ if (isMock) {
       message: '加载中...',
       forbidClick: true,
     });
-    const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
-    closeToast();
-    currentTemperature.value = temperature.inner;
-    drinks.value = drinkInfo.drinks;
-    page.value += 1;
+    try{
+      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
+      currentTemperature.value = temperature.inner;
+      drinks.value = drinkInfo.drinks;
+      page.value += 1;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      closeToast();
+    }
   });
 }
 

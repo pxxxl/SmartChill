@@ -17,7 +17,7 @@ request.interceptors.request.use(
   
 request.interceptors.response.use(
     (res) => {
-        if (res.data.code === 1 || res.data.code === 2) {
+        if (res.data.code !== 200) {
             console.log(res.data)
             showFailToast('请求失败')
         } else {

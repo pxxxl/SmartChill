@@ -18,16 +18,16 @@ import java.io.ByteArrayInputStream;
 @ConfigurationProperties(prefix = "oss")
 public class AliOssUtil {
     @Value("${oss.endpoint}")
-    private static String endpoint;
+    private String endpoint;
 
     @Value("${oss.accessKeyId}")
-    private static String accessKeyId;
+    private String accessKeyId;
 
     @Value("${oss.accessKeySecret}")
-    private static String accessKeySecret;
+    private String accessKeySecret;
 
     @Value("${oss.bucketName}")
-    private static String bucketName;
+    private String bucketName;
 
     /**
      * 文件上传
