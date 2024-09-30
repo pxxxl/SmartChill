@@ -4,5 +4,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.minjer.smartchill.mapper.DrinkMapper">
-
+    <resultMap id="DrinkResultMap" type="com.minjer.smartchill.entity.dto.Drink">
+        <result column="id" property="id"/>
+        <result column="name" property="name"/>
+        <result column="price" property="price"/>
+        <result column="image" property="image"/>
+    </resultMap>
+    <update id="updateDrink">
+        update drink_info
+        <set>
+            <if test="price != null">
+                price = #{price},
+            </if>
+            <if test="image != null">
+                image = #{image},
+            </if>
+        </set>
+        where name = #{name}
+    </update>
 </mapper>

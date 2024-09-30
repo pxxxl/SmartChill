@@ -4,7 +4,6 @@ import com.minjer.smartchill.entity.dto.Drink;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,6 +22,5 @@ public interface DrinkMapper {
     @Select("SELECT * FROM drink_info WHERE name = #{name}")
     public Drink getDrinkByName(String name);
 
-    @Update("UPDATE drink_info SET price = #{price}, image = #{image} WHERE name = #{name}")
     public void updateDrink(String name, BigDecimal price, String image);
 }

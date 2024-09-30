@@ -24,6 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -220,6 +221,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void updateDrinkOnSale() {
+        log.info("更新饮品信息");
         // 1. 从缓存中获取在售饮品信息
         ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
 
@@ -233,6 +235,8 @@ public class AdminServiceImpl implements AdminService {
             for (DrinkOnSale drinkOnSale : drinkOnSales) {
                 long minutes = Duration.between(drinkOnSale.getCreateTime(), LocalDateTime.now()).toMinutes();
                 BigDecimal updateTemperature = BigDecimal.valueOf(TemperatureUtil.calCoolingTemperature(drinkOnSale.getCreateTemperature().doubleValue(), temperature.doubleValue(), minutes));
+                // 将温度限定为一位小数
+                updateTemperature = updateTemperature.setScale(1, RoundingMode.HALF_UP);
                 drinkOnSale.setTemperature(updateTemperature);
                 newDrinkOnSales.add(drinkOnSale);
             }

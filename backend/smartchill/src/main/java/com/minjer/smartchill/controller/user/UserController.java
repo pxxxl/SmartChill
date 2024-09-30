@@ -20,4 +20,9 @@ public class UserController {
                                      @RequestParam("pagesize") Integer size) {
         return userService.getOnSaleDrinkPage(page, size);
     }
+
+    @GetMapping("/temperature")
+    public Result getTemperature() {
+        return userService.getTemperature();
+    }
 }
