@@ -42,9 +42,20 @@ const loadMoreData = async () => {
   if (isMock) {
     drinks.value = [...drinks.value, ...mockDrinkInfo];
   } else {
-    const drinkInfo = await getDrinkInfo(page.value, pageSize);
-    drinks.value = [...drinks.value, ...(drinkInfo.drinks)];
-    page.value += 1;
+    showLoadingToast({
+      message: '加载中...',
+      forbidClick: true,
+    });
+    try{
+      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
+      currentTemperature.value = temperature.inner;
+      drinks.value = drinkInfo.data.drinks;
+      page.value += 1;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      closeToast();
+    }
   }
   isLoading.value = false;
 };
@@ -53,22 +64,22 @@ if (isMock) {
   currentTemperature.value = 10;
   drinks.value = mockDrinkInfo;
 } else {
-  onMounted(async () => {
-    showLoadingToast({
-      message: '加载中...',
-      forbidClick: true,
-    });
-    try{
-      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
-      currentTemperature.value = temperature.inner;
-      drinks.value = drinkInfo.drinks;
-      page.value += 1;
-    } catch (error) {
-      console.error(error);
-    } finally {
-      closeToast();
-    }
-  });
+  // onMounted(async () => {
+  //   showLoadingToast({
+  //     message: '加载中...',
+  //     forbidClick: true,
+  //   });
+  //   try{
+  //     const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
+  //     currentTemperature.value = temperature.inner;
+  //     drinks.value = drinkInfo.data.drinks;
+  //     page.value += 1;
+  //   } catch (error) {
+  //     console.error(error);
+  //   } finally {
+  //     closeToast();
+  //   }
+  // });
 }
 
 const bottom = ref(null);

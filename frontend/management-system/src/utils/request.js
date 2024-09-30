@@ -3,11 +3,11 @@ import { useUserStore } from '@/stores/index'
 import { Message } from '@arco-design/web-vue'
 import router from '@/router/router'
 
-export const baseURL = 'https://localhost:8080'
+export const baseURL = 'http://localhost:8080'
 
 const request = axios.create({
   baseURL: baseURL,
-  timeout: 1000
+  timeout: 10000
 })
 
 request.interceptors.request.use(

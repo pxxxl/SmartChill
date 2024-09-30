@@ -2,8 +2,8 @@ import axios from 'axios';
 import { showFailToast } from 'vant';
 
 const request = axios.create({
-    baseURL: 'https://localhost:8080/',
-    timeout: 1000,
+    baseURL: 'http://localhost:8080/',
+    timeout: 10000,
 });
 request.interceptors.request.use(
     (config) => {
