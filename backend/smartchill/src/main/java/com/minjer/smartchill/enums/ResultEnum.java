@@ -19,7 +19,9 @@ public enum ResultEnum {
     UPLOAD_FAILED(1004, "文件上传失败"),
     DRINK_NOT_EXIST(1005, "饮品不存在"),
     PRICE_ERROR(1006, "价格不符合要求，请控制在0.1-99.9之间"),
-    DRINK_UNSOLD(1007, "饮品未销售完毕，不允许补货"),;
+    DRINK_UNSOLD(1007, "饮品未销售完毕，不允许补货"),
+
+    FILE_READ_ERROR(2001, "文件读取失败"),;
 
 
 

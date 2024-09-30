@@ -34,3 +34,6 @@ oss:
   access-key-secret: ${oss.access-key-secret}
   bucket-name: ${oss.bucket-name}
 
+github:
+  api: ${github.api}
+  token: ${github.token}
