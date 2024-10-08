@@ -3,7 +3,8 @@ import { useUserStore } from '@/stores/index'
 import { Message } from '@arco-design/web-vue'
 import router from '@/router/router'
 
-export const baseURL = 'http://localhost:18080'
+export const baseURL = '/api'
+
 
 const request = axios.create({
   baseURL: baseURL,
@@ -42,5 +43,6 @@ request.interceptors.response.use(
     return Promise.reject(err)
   }
 )
+// request.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 export default request

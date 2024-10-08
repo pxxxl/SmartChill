@@ -1,7 +1,7 @@
 <template>
 <div class="layout-container">
     <div class="menu">
-        <img src="../assets/logo-2.png" alt="logo" class="logo"/>
+        <img src="../assets/logo-2.jpg" alt="logo" class="logo"/>
         <a-menu :default-selected-keys="['/device']" @menu-item-click="handleClick">
             <a-menu-item key="/device">
                 <template #icon><icon-printer /></template>
@@ -26,6 +26,7 @@
 <script setup>
 import { useRouter } from 'vue-router';
 import { useUserStore } from '@/stores';
+import { onMounted } from 'vue';
 
 const router = useRouter();
 const userStore = useUserStore();
@@ -38,6 +39,12 @@ const logout = () => {
 const handleClick = ( key ) => {
     router.push(`${key}`);
 };
+onMounted(
+    () => {
+        router.push('/device');
+    }
+);
+
 </script>
 <style scoped>
 .layout-container {

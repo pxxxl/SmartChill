@@ -4,7 +4,7 @@
         <div class="drink-info-title">冰柜实时信息</div>
         <a-button type="primary" @click="supply" style="margin-left: 20px;">补货</a-button>
     </div>
-    <a-table :columns="columns" :data="tableData" row-key="name" page-position="bottom" :pagination="{total: totalRef}">
+    <a-table :columns="columns" :data="tableData" row-key="name" page-position="bottom" :pagination="{total: totalRef}" :loading="isLoading">
         <template #columns>
             <a-table-column title="名称" data-index="name"></a-table-column>
             <a-table-column title="图片">
@@ -80,7 +80,7 @@ const columns = ref([
     customRender: 'position',
 }
 ]);
-const page = ref(0);
+const page = ref(1);
 const pageSize = 20;
 const totalRef = ref(0);
 const tableData = ref([]);
@@ -147,7 +147,7 @@ const submit = async () => {
             Message.success('操作成功');
         }
         else{
-            await supplyAPI(form);
+            await supplyAPI([form]);
             Message.success('操作成功');
             refreshData();
         }

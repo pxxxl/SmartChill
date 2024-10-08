@@ -25,7 +25,7 @@ export const setDrinkBaseInfoAPI = (data) => {
 
 export const getDrinkRealTimeInfoAPI = (page, pageSize) => {
     return request({
-        url: "/user/drink?pageSize=" + pageSize + "&page=" + page,
+        url: "/user/drink?pagesize=" + pageSize + "&page=" + page,
         method: "get",
     });
 }
