@@ -71,7 +71,7 @@ public class AdminServiceImpl implements AdminService {
 
         // 构建Map
         Map<String, Object> map = new HashMap<>();
-        map.put("Token", token);
+        map.put("Authorization", token);
 
         return Result.success(map);
     }
