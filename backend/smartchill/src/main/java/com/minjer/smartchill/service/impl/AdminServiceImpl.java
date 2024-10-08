@@ -3,6 +3,7 @@ package com.minjer.smartchill.service.impl;
 import com.minjer.smartchill.constant.RedisConstant;
 import com.minjer.smartchill.entity.dto.Account;
 import com.minjer.smartchill.entity.dto.Drink;
+import com.minjer.smartchill.entity.dto.Transaction;
 import com.minjer.smartchill.entity.pojo.DrinkCountInfo;
 import com.minjer.smartchill.entity.result.Result;
 import com.minjer.smartchill.entity.vo.DeviceInfo;
@@ -212,7 +213,10 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSales.add(drinkOnSale);
 
             // 4. 更新交易表
-             transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getCount(), LocalDateTime.now());
+             transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getCount(), drinkCountInfo.getPosition() ,LocalDateTime.now());
+
+            log.info("饮品{}补货成功, count: {}, position: {}", drink.getName(), drinkCountInfo.getCount(), drinkCountInfo.getPosition());
+            break;
         }
 
         // 4. 更新缓存
@@ -225,7 +229,7 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     public void updateDrinkOnSale() {
-        log.info("更新饮品信息");
+        log.info("更新饮品信息（温度、图片、价格），当前时间：{}", LocalDateTime.now());
         // 1. 从缓存中获取在售饮品信息
         ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
 
@@ -254,6 +258,37 @@ public class AdminServiceImpl implements AdminService {
             // 2.2. 更新缓存
             redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
             redisService.set(RedisConstant.DRINK_UPDATE_TIME, LocalDateTime.now());
+        }else {
+            log.error("在售饮品信息为空，读取交易表进行初始化");
+            // 2.3. 读取交易表进行初始化
+            ArrayList<DrinkOnSale> newDrinkOnSales = new ArrayList<>();
+            ArrayList<Transaction> drinkOnSaleList = transactionMapper.getDrinkOnSale();
+            log.info("读取交易表成功，当前剩余情况：{}", drinkOnSaleList);
+
+            // 2.4. 更新饮品信息
+            for (Transaction transaction : drinkOnSaleList) {
+                // 构建新的饮品信息
+                DrinkOnSale drinkOnSale = new DrinkOnSale();
+                // 获取饮品信息
+                Drink drink = drinkMapper.getDrinkById(transaction.getDrinkId());
+
+                drinkOnSale.setDrinkId(drink.getId());
+                drinkOnSale.setName(drink.getName());
+                drinkOnSale.setPrice(drink.getPrice());
+                drinkOnSale.setPosition(transaction.getPosition());
+                drinkOnSale.setCount(transaction.getCount());
+                drinkOnSale.setImage(drink.getImage());
+                drinkOnSale.setCreateTime(LocalDateTime.now());
+                // 设定温度
+                BigDecimal temperature = temperatureMapper.getRecentOutsideTemperature().setScale(1, RoundingMode.HALF_UP);
+                drinkOnSale.setTemperature(temperature);
+                drinkOnSale.setCreateTemperature(temperature);
+
+                newDrinkOnSales.add(drinkOnSale);
+            }
+
+            // 2.5. 更新缓存
+            redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
         }
     }
 
