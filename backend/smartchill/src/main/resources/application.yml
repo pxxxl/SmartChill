@@ -37,3 +37,7 @@ oss:
 github:
   api: ${github.api}
   token: ${github.token}
+
+pics:
+  url: ${pics.url}
+  token: ${pics.token}

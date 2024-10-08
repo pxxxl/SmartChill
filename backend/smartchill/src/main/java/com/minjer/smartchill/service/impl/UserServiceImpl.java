@@ -68,11 +68,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Result getTemperature() {
+        log.info("获取温度信息");
         // 1. 检查缓存上一次更新时间
         LocalDateTime lastUpdateTime = (LocalDateTime) redisService.get(RedisConstant.TEMPERATURE_UPDATE_TIME);
 
         // 2. 如果超过一分钟，更新缓存
         if (lastUpdateTime == null || lastUpdateTime.plusMinutes(1).isBefore(LocalDateTime.now())) {
+            log.info("温度信息缓存过期，从数据库中获取");
             Double innerTemperature = temperatureMapper.getRecentInsideTemperature().doubleValue();
             Double outerTemperature = temperatureMapper.getRecentOutsideTemperature().doubleValue();
 
