@@ -5,5 +5,8 @@ export const uploadAPI = (data) => {
         url: "/admin/upload",
         method: "post",
         data,
+        headers: {
+            "Content-Type": "multipart/form-data"
+        }
     });
 }

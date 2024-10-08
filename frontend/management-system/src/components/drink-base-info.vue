@@ -44,7 +44,8 @@
                 ({ resizeImg, data }) => {
                 form.image = data
                 resizeImgRef = resizeImg
-                console.log(resizeImgRef)
+                console.log(data)
+                console.log('resizeImg.url' + resizeImg.url)
                 }
             "
             prop="image"
@@ -195,12 +196,21 @@ const submit = async () => {
         if(validRes !== undefined) {
             return false
         }
-        const formData = new FormData();
-        formData.append('file' , form.image);
+
         if(!isMock) {
             isLoading.value = true;
-            const uploadRes = await uploadAPI(formData);
-            form.image = uploadRes.data.url;
+            
+            if(form.image instanceof Blob) {
+                const formData = new FormData();
+                const originalFilename = 'default_filename.jpg';    
+                const file = new File([form.image], originalFilename, {
+                    type: form.image.type,
+                });
+                formData.append('file', file);
+                const uploadRes = await uploadAPI(formData);
+                console.log(uploadRes);
+                form.image = uploadRes.data;
+            }
             await setDrinkBaseInfoAPI(form);
             Message.success('操作成功');
             refreshData();
