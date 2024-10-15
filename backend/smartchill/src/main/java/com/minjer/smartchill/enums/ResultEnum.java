@@ -22,7 +22,8 @@ public enum ResultEnum {
     DRINK_UNSOLD(1007, "饮品未销售完毕，不允许补货"),
     OUT_OF_STOCK(1008, "库存不足"),
 
-    FILE_READ_ERROR(2001, "文件读取失败"), ;
+    FILE_READ_ERROR(2001, "文件读取失败"),
+    DATE_ERROR(2002, "日期错误"),;
 
 
 

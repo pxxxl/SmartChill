@@ -21,5 +21,14 @@
         group by drink_id, position
         having sum(IF(type = 0, count, 0)) - sum(IF(type = 1, count, 0)) > 0
     </select>
+    <select id="getDrinkSellStatisticsByDate" resultType="com.minjer.smartchill.entity.dto.Transaction">
+        select drink_id,
+               sum(IF(type = 1, count, 0)) AS count
+        from transaction
+        where time between #{begin} and #{end}
+        group by drink_id
+        having sum(IF(type = 1, count, 0)) > 0
+    </select>
+
 
 </mapper>

@@ -10,6 +10,7 @@
         <result column="price" property="price"/>
         <result column="image" property="image"/>
     </resultMap>
+
     <update id="updateDrink">
         update drink_info
         <set>
@@ -22,4 +23,6 @@
         </set>
         where name = #{name}
     </update>
+
+
 </mapper>

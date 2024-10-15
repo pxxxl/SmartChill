@@ -23,4 +23,5 @@ public interface DrinkMapper {
     public Drink getDrinkByName(String name);
 
     public void updateDrink(String name, BigDecimal price, String image);
+
 }

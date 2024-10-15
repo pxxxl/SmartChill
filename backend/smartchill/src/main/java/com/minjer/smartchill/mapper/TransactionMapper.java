@@ -13,4 +13,7 @@ public interface TransactionMapper {
     void insertTransaction(Integer drinkId, Byte type, Integer count,Integer position, LocalDateTime time);
 
     ArrayList<Transaction> getDrinkOnSale();
+
+
+    ArrayList<Transaction> getDrinkSellStatisticsByDate(LocalDateTime begin, LocalDateTime end);
 }
