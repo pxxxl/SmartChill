@@ -1,13 +1,20 @@
 <template>
   <div id="app">
     <div class="header">
-      <div>查看销量</div>
+      <button class="sale" @click="open">查看销量</button>
       <h1>智能冰柜-饮品信息</h1>
       <span>{{ currentTemperature ? currentTemperature + '℃' : '' }}</span>
     </div>
+    <van-pull-refresh
+      v-model="isRefreshing"
+      success-text="刷新成功"
+      @refresh="onRefresh"
+      :disabled="isLoading"
+    >
+    
     <div class="empty-container" v-if="drinks.length == 0">
         <Empty description="暂无数据" />
-      </div>
+    </div>
     <div class="drink-container">
       <div class="drink" v-for="drink in drinks" :key="drink.name">
         <img :src="drink.image" :alt="drink.name" />
@@ -19,68 +26,135 @@
       </div>
       </div>
     </div>
-    <div ref="bottom" class="bottom"></div>
+    </van-pull-refresh>
+    
   </div>
+  <saleGraph ref="saleGraphRef"/>
+  <div class="loadingStatus" v-show="isLoading" v-if="enableLoadMore">
+    <van-loading type="spinner" size="20px"/>
+    <span style="font-size: 16px;line-height: 23px;margin-left: 5px;color: darkgray;">加载中...</span>
+  </div>
+  <div ref="bottom" class="bottom"></div>
 </template>
 
 <script setup>
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { isMock, mockDrinkInfo } from '@/mock/mock';
 import { getTemperature, getDrinkInfo } from '@/api/User';
 import { showLoadingToast, closeToast,Empty } from 'vant';
+import saleGraph from '@/components/sale-graph.vue';
 
 const currentTemperature = ref();
 const drinks = ref([]);
 const page = ref(1);
-const pageSize = 4;
+const pageSize = 20;
 const isLoading = ref(false);
+const saleGraphRef = ref();
+const isRefreshing = ref(false);
+const enableLoadMore = ref(false)
+
+const open = () => {
+  saleGraphRef.value.open();
+};
+
+const onRefresh = async () => {
+  if (isMock) {
+    setTimeout(() => {
+      drinks.value = mockDrinkInfo;
+      isRefreshing.value = false;
+      console.log('refresh');
+    }, 1000);
+  } else {
+    try{
+      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(1, pageSize)]);
+      currentTemperature.value = temperature.inner;
+      drinks.value = drinkInfo.data.drinks;
+      page.value = 2;
+    } catch (error) {
+      console.error(error);
+    } finally {
+      isRefreshing.value = false;
+    }
+  }
+};
 
 const loadMoreData = async () => {
-  if (isLoading.value) return;
+  console.log('load more data');
+  if (isLoading.value || isRefreshing.value) {
+    console.log('loading block');
+    return
+  }
   isLoading.value = true;
-
   if (isMock) {
-    drinks.value = [...drinks.value, ...mockDrinkInfo];
+    setTimeout(() => {
+      drinks.value = [...drinks.value, ...mockDrinkInfo];
+      isLoading.value = false;
+      checkContentHeight();
+    }, 5000);
   } else {
-    showLoadingToast({
-      message: '加载中...',
-      forbidClick: true,
-    });
     try{
       const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
       currentTemperature.value = temperature.inner;
+      drinks.value = [...drinks.value, ...drinkInfo.data.drinks];
+      page.value += 1;
+      if (drinkInfo.data.drinks.length < pageSize) {
+        enableLoadMore.value = false;
+        observer.unobserve(bottom.value);
+      }
+      checkContentHeight();
+    } catch (error) {
+      console.error(error);
+    } finally {
+      
+      isLoading.value = false;
+    }
+  }
+  
+};
+const initData = async () => {
+  if (isMock) {
+  isLoading.value = true;
+  showLoadingToast({
+    message: '加载中...',
+    forbidClick: true,
+    duration: 0
+  });
+  setTimeout(() => {
+    drinks.value = mockDrinkInfo;
+    currentTemperature.value = 10;
+    closeToast();
+    isLoading.value = false;
+    enableLoadMore.value = true;
+  }, 1000);
+} else {
+    isLoading.value = true;
+    showLoadingToast({
+      message: '加载中...',
+      forbidClick: true,
+      duration: 0
+    });
+    try{
+      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
+      currentTemperature.value = temperature.data.inner;
       drinks.value = drinkInfo.data.drinks;
       page.value += 1;
     } catch (error) {
       console.error(error);
     } finally {
+      isLoading.value = false;
+      enableLoadMore.value = true;
       closeToast();
     }
-  }
-  isLoading.value = false;
-};
-
-if (isMock) {
-  currentTemperature.value = 10;
-  drinks.value = mockDrinkInfo;
-} else {
-  // onMounted(async () => {
-  //   showLoadingToast({
-  //     message: '加载中...',
-  //     forbidClick: true,
-  //   });
-  //   try{
-  //     const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(page.value, pageSize)]);
-  //     currentTemperature.value = temperature.inner;
-  //     drinks.value = drinkInfo.data.drinks;
-  //     page.value += 1;
-  //   } catch (error) {
-  //     console.error(error);
-  //   } finally {
-  //     closeToast();
-  //   }
-  // });
 }
+}
+const checkContentHeight = async () => {
+  await nextTick(); // 确保DOM更新完成
+  const contentHeight = document.querySelector('#app').offsetHeight;
+  const windowHeight = window.innerHeight;
+  if (contentHeight < windowHeight) {
+    await loadMoreData();
+  }
+};
 
 const bottom = ref(null);
 
@@ -93,10 +167,13 @@ const observer = new IntersectionObserver(async (entries) => {
   threshold: 1.0
 });
 
-onMounted(() => {
+onMounted(async () => {
+  initData();
   if (bottom.value) {
     observer.observe(bottom.value);
   }
+  await loadMoreData();
+  checkContentHeight();
 });
 
 onUnmounted(() => {
@@ -108,7 +185,9 @@ onUnmounted(() => {
 
 <style scoped>
 .bottom {
+  margin-top: -10px;
   height: 1px;
+  background-color: transparent; /* 确保 bottom 元素不会被遮挡 */
 }
 .empty-container {
   display: flex;
@@ -117,6 +196,15 @@ onUnmounted(() => {
   align-content: center;
   height: 100%;
   width: 100%;
+}
+.loadingStatus {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-content: center;
+  width: 100%;
+  height: 25px;
 }
 .header{
   text-align: center;
@@ -131,14 +219,20 @@ onUnmounted(() => {
   font-weight: normal;
   width: fit-content;
 }
-.header div{
+.header .sale{
+  display: block;
   font-size: 12px;
-  width: 24px;
+  width: 32px;
   background-color: #59a5f5;
   padding: 4px 4px;
   border-radius: 5px;
+  border: none;
   margin-left: 10px;
   cursor: pointer;
+}
+
+.header .sale:active{
+  background-color: #007BBB;
 }
 
 .header span{
@@ -159,14 +253,14 @@ onUnmounted(() => {
   background-color: #fff;
   border-radius: 15px;
   margin-top: 5px;
-  padding: 10px;
+  padding: 8px;
 }
 
 
 
 .drink img {
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 200px;
 }
 
 .drink h2 {
@@ -215,6 +309,9 @@ onUnmounted(() => {
   .drink-info span {
     font-size: 10px;
   }
+  .drink img {
+  height: 150px;
+  }
 }
 @media screen and (max-width: 320px) {
   .header h1{
@@ -227,6 +324,9 @@ onUnmounted(() => {
   .drink-info span {
     font-size: 9px;
   } 
+  .drink img {
+  height: 100px;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -270,6 +370,9 @@ onUnmounted(() => {
   .header div{
     margin-left: 100px;
   }
+  .sale{
+    margin-left: 100px !important;
+  }
 }
  @media screen and (min-width: 1400px) {
   .drink-container {
@@ -282,5 +385,30 @@ onUnmounted(() => {
   .header div{
     margin-left: 200px;
   }
+  .sale{
+    margin-left: 200px !important;
+  }
+  .drink-info span {
+    font-size: 13px;
+  }
+}
+@media screen and (min-width: 1600px) {
+  .drink-container {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin: auto 300px;
+  }
+  .header span{
+    margin-right: 300px;
+  }
+  .header div{
+    margin-left: 300px;
+  }
+  .sale{
+    margin-left: 300px !important;
+  }
+  .drink-info span {
+    font-size: 16px;
+  }
+  
 }
 </style>

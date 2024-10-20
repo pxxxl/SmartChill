@@ -5,6 +5,16 @@ module.exports = defineConfig({
 	devServer: {
     client: {
       overlay: false
+    },
+    proxy: {
+      '/api': {
+        target: 'http://5bd7091c.r7.cpolar.top',
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        },
+      }
+      
     }
   }
 })

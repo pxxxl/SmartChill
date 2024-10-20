@@ -2,6 +2,7 @@
 
 需要事先安装pnpm
 修改mock.js的isMock变量以使用真实请求数据
+请求配置 - src/utils/request.js(请求地址) / vue.config.js(代理地址)
 ## Project setup
 ```
 pnpm install
