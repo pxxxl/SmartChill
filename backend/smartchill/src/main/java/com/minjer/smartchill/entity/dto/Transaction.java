@@ -15,6 +15,7 @@ public class Transaction implements Serializable {
     private Integer drinkId;
     private Byte type;
     private Integer count;
+    private Integer fridge;
     private Integer position;
     private LocalDateTime time;
 }

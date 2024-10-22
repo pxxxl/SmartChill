@@ -1,10 +1,12 @@
 package com.minjer.smartchill.service.impl;
 
 import com.minjer.smartchill.constant.RedisConstant;
+import com.minjer.smartchill.entity.dto.Transaction;
 import com.minjer.smartchill.entity.result.Result;
 import com.minjer.smartchill.entity.vo.DrinkOnSale;
 import com.minjer.smartchill.enums.ResultEnum;
 import com.minjer.smartchill.exception.BaseException;
+import com.minjer.smartchill.mapper.DrinkMapper;
 import com.minjer.smartchill.mapper.TemperatureMapper;
 import com.minjer.smartchill.mapper.TransactionMapper;
 import com.minjer.smartchill.service.AdminService;
@@ -32,14 +34,19 @@ public class UserServiceImpl implements UserService {
     private AdminService adminService;
 
     @Autowired
+    private DrinkMapper drinkMapper;
+
+    @Autowired
     private TransactionMapper transactionMapper;
 
     @Autowired
     private TemperatureMapper temperatureMapper;
 
     @Override
-    public Result getOnSaleDrinkPage(Integer page, Integer size) {
+    public Result getOnSaleDrinkPage(Integer page, Integer size, Boolean order, Integer fridge) {
         log.info("分页获取在售饮品列表");
+        ArrayList<DrinkOnSale> drinkOnSaleList = null;
+
         // 1. 检查缓存上一次更新时间
         LocalDateTime lastUpdateTime = (LocalDateTime) redisService.get(RedisConstant.DRINK_UPDATE_TIME);
 
@@ -48,18 +55,40 @@ public class UserServiceImpl implements UserService {
             adminService.updateDrinkOnSale();
         }
 
-        ArrayList<DrinkOnSale> drinkOnSaleList = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
+        drinkOnSaleList = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
         if (drinkOnSaleList == null) {
             log.error("缓存中没有饮品信息，从数据库中获取");
             adminService.updateDrinkOnSale();
             drinkOnSaleList = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
         }
 
-        log.info("获取在售饮品列表成功，共{}种饮品", drinkOnSaleList.size());
-        // 3. 分页返回
-        List<DrinkOnSale> pageResult = PageUtil.paginate(page, size, drinkOnSaleList);
-
+        List<DrinkOnSale> pageResult = null;
         int total = drinkOnSaleList.size();
+
+        if (fridge != null || order) {
+            ArrayList<Transaction> transactions = transactionMapper.getDrinkOnSaleByFridgeAndOrder(fridge, order);
+            total = transactions.size();
+            pageResult = new ArrayList<>();
+            for (int i = (page - 1) * size, j = 0; i < transactions.size() && j < size; i++, j++) {
+                Transaction transaction = transactions.get(i);
+
+                for (DrinkOnSale onSale : drinkOnSaleList) {
+                    if (onSale.getDrinkId().equals(transaction.getDrinkId())
+                            && onSale.getFridge().equals(transaction.getFridge())
+                            && onSale.getPosition().equals(transaction.getPosition())) {
+                        pageResult.add(onSale);
+                        break;
+                    }
+                }
+            }
+
+        } else {
+            pageResult = PageUtil.paginate(page, size, drinkOnSaleList);
+        }
+
+        log.info("获取在售饮品列表成功，共{}种饮品", drinkOnSaleList.size());
+
+
 
         Map<String, Object> data = Map.of("total", total, "drinks", pageResult);
 
@@ -93,14 +122,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Result sellDrink(Integer position, Integer count) {
+    public Result sellDrink(Integer fridge, Integer position, Integer count) {
         // 1. 从缓存中获取在售饮品信息
         ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
 
         // 2. 更新饮品信息
         if (drinkOnSales != null) {
             for (DrinkOnSale drinkOnSale : drinkOnSales) {
-                if (drinkOnSale.getPosition().equals(position)) {
+                if (drinkOnSale.getPosition().equals(position) && drinkOnSale.getFridge().equals(fridge)) {
                     if (drinkOnSale.getCount() < count) {
                         throw new BaseException(ResultEnum.OUT_OF_STOCK);
                     }
@@ -111,7 +140,7 @@ public class UserServiceImpl implements UserService {
                         drinkOnSales.remove(drinkOnSale);
                     }
 
-                    transactionMapper.insertTransaction(drinkOnSale.getDrinkId(), (byte) 1, count, position, LocalDateTime.now());
+                    transactionMapper.insertTransaction(drinkOnSale.getDrinkId(), (byte) 1, fridge, count, position, LocalDateTime.now());
 
                     log.info("饮品{}销售成功，剩余库存{}", drinkOnSale.getName(), drinkOnSale.getCount());
                     break;

@@ -18,6 +18,8 @@ public class DrinkOnSale implements Serializable {
     private String name;
     @JsonProperty("price")
     private BigDecimal price;
+    @JsonProperty("fridge")
+    private Integer fridge;
     @JsonProperty("position")
     private Integer position;
     @JsonProperty("count")

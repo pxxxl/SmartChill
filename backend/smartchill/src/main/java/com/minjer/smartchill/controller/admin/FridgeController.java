@@ -35,7 +35,7 @@ public class FridgeController {
     @PostMapping
     public Result postDrink(@RequestBody ArrayList<DrinkCountInfo> drinkCountInfos) {
         log.info("PostRequest: /admin/drink");
-
+        log.info("drinkCountInfos: {}", drinkCountInfos);
         return adminService.addDrink(drinkCountInfos);
     }
 }

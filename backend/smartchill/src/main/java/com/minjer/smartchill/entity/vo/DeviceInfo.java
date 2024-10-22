@@ -13,6 +13,12 @@ public class DeviceInfo implements Serializable {
     @JsonProperty("name")
     private String name;
 
-    @JsonProperty("desc")
-    private String description;
+    @JsonProperty("device_id")
+    private String deviceId;
+
+    @JsonProperty("position")
+    private Integer position;
+
+    @JsonProperty("belong")
+    private String belong;
 }

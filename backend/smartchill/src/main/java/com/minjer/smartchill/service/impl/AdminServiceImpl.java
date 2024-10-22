@@ -28,6 +28,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 @Slf4j
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -147,7 +148,7 @@ public class AdminServiceImpl implements AdminService {
             // 2. 创建饮品信息
             drinkMapper.insertDrink(drink.getName(), drink.getPrice(), drink.getImage());
             log.info("创建饮品信息成功, name: {}, price: {}, image: {}", drink.getName(), drink.getPrice(), drink.getImage());
-        }else {
+        } else {
             // 2. 更新饮品信息
             drinkMapper.updateDrink(drink.getName(), drink.getPrice(), drink.getImage());
             log.info("更新饮品信息成功, name: {}, price: {}, image: {}", drink.getName(), drink.getPrice(), drink.getImage());
@@ -158,18 +159,18 @@ public class AdminServiceImpl implements AdminService {
 
     @Override
     @Transactional
-    // TODO 向交易表中插入交易信息
     public Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos) {
         // 从缓存中获取在售饮品信息
         ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get("drinkList");
 
         // 对提交的补货信息逐个检查
         for (DrinkCountInfo drinkCountInfo : drinkCountInfos) {
+            log.info("补货信息：{}", drinkCountInfo);
             // 0. 检查补货信息是否合法
-            if (drinkCountInfo.getCount() <= 0 || drinkCountInfo.getPosition() <= 0) {
-                log.error("补货信息不合法, count: {}, position: {}", drinkCountInfo.getCount(), drinkCountInfo.getPosition());
+            if (drinkCountInfo.getCount() <= 0 || drinkCountInfo.getPosition() <= 0 || drinkCountInfo.getFridge() <= 0) {
+                log.error("补货信息不合法, count: {}, position: {}, fridge: {}", drinkCountInfo.getCount(), drinkCountInfo.getPosition(), drinkCountInfo.getFridge());
                 throw new BaseException(ResultEnum.UNPROCESABLE_ENTITY);
-            }else if (drinkCountInfo.getDrinkId() == null) {
+            } else if (drinkCountInfo.getDrinkId() == null) {
                 log.error("饮品ID为空");
                 throw new BaseException(ResultEnum.UNPROCESABLE_ENTITY);
             }
@@ -177,20 +178,22 @@ public class AdminServiceImpl implements AdminService {
             // 1. 检查饮品是否存在
             Drink drink = drinkMapper.getDrinkById(drinkCountInfo.getDrinkId());
 
-            if(drink == null) {
+            if (drink == null) {
                 log.error("饮品不存在, drinkId: {}", drinkCountInfo.getDrinkId());
                 throw new BaseException(ResultEnum.DRINK_NOT_EXIST);
             }
 
-            // 2. 判断饮料是否销售完毕，如果未销售完毕则不允许补货
+            // 2. 判断该冰箱该位置是否已经售空
             if (drinkOnSales != null) {
                 for (DrinkOnSale drinkOnSale : drinkOnSales) {
-                    if (drinkOnSale.getDrinkId().equals(drinkCountInfo.getDrinkId()) && drinkOnSale.getCount() != 0) {
-                        log.error("饮品{}未销售完毕，不允许补货", drink.getName());
+                    if (drinkOnSale.getFridge().equals(drinkCountInfo.getFridge())
+                            && drinkOnSale.getPosition().equals(drinkCountInfo.getPosition())
+                            && drinkOnSale.getCount() != 0) {
+                        log.error("饮品{}未售空, fridge: {}, position: {}，不允许补货", drink.getName(), drinkCountInfo.getFridge(), drinkCountInfo.getPosition());
                         throw new BaseException(ResultEnum.DRINK_UNSOLD);
                     }
                 }
-            }else {
+            } else {
                 // 2.1 如果缓存中没有饮品信息，则进行初始化写入
                 drinkOnSales = new ArrayList<>();
             }
@@ -201,6 +204,7 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSale.setDrinkId(drink.getId());
             drinkOnSale.setName(drink.getName());
             drinkOnSale.setPrice(drink.getPrice());
+            drinkOnSale.setFridge(drinkCountInfo.getFridge());
             drinkOnSale.setPosition(drinkCountInfo.getPosition());
             drinkOnSale.setCount(drinkCountInfo.getCount());
             drinkOnSale.setImage(drink.getImage());
@@ -213,10 +217,9 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSales.add(drinkOnSale);
 
             // 4. 更新交易表
-             transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getCount(), drinkCountInfo.getPosition() ,LocalDateTime.now());
+            transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getFridge(), drinkCountInfo.getCount(), drinkCountInfo.getPosition(), LocalDateTime.now());
 
-            log.info("饮品{}补货成功, count: {}, position: {}", drink.getName(), drinkCountInfo.getCount(), drinkCountInfo.getPosition());
-            break;
+            log.info("饮品{}补货成功, count: {}, fridge: {}, position: {}", drink.getName(), drinkCountInfo.getCount(), drinkCountInfo.getFridge(), drinkCountInfo.getPosition());
         }
 
         // 4. 更新缓存
@@ -258,7 +261,7 @@ public class AdminServiceImpl implements AdminService {
             // 2.2. 更新缓存
             redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
             redisService.set(RedisConstant.DRINK_UPDATE_TIME, LocalDateTime.now());
-        }else {
+        } else {
             log.error("在售饮品信息为空，读取交易表进行初始化");
             // 2.3. 读取交易表进行初始化
             ArrayList<DrinkOnSale> newDrinkOnSales = new ArrayList<>();
@@ -275,6 +278,7 @@ public class AdminServiceImpl implements AdminService {
                 drinkOnSale.setDrinkId(drink.getId());
                 drinkOnSale.setName(drink.getName());
                 drinkOnSale.setPrice(drink.getPrice());
+                drinkOnSale.setFridge(transaction.getFridge());
                 drinkOnSale.setPosition(transaction.getPosition());
                 drinkOnSale.setCount(transaction.getCount());
                 drinkOnSale.setImage(drink.getImage());

@@ -23,7 +23,7 @@ public class TestController {
     @GetMapping()
     public Result test() {
         log.info("test");
-        userService.sellDrink(4, 1);
+
         return Result.success();
     }
 }

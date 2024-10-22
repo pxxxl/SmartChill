@@ -1,20 +1,28 @@
 package com.minjer.smartchill;
 
+import com.minjer.smartchill.entity.dto.Transaction;
+import com.minjer.smartchill.mapper.TransactionMapper;
 import com.minjer.smartchill.utils.ImageUtil;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.File;
+import java.util.ArrayList;
 
 @SpringBootTest
 class SmartchillApplicationTests {
     @Autowired
     private ImageUtil imageUtil;
+
+    @Autowired
+    private TransactionMapper transactionMapper;
     @Test
-    void contextLoads() {
-        String url = imageUtil.uploadImage(new File("C:\\Users\\Minjer\\Desktop\\PixPin_2024-10-08_19-53-12.png"));
-        System.out.println(url);
+    void testTransactionMapper() {
+        ArrayList<Transaction> drink = transactionMapper.getDrinkOnSaleByFridgeAndOrder(null, true);
+        System.out.println(drink);
+
+        System.out.println("------------------------------------------------------");
+        System.out.println(transactionMapper.getDrinkOnSale());
     }
 
 }

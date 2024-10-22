@@ -4,9 +4,9 @@ import com.minjer.smartchill.entity.result.Result;
 
 public interface UserService {
 
-    Result getOnSaleDrinkPage(Integer page, Integer size);
+    Result getOnSaleDrinkPage(Integer page, Integer size, Boolean order, Integer fridge);
 
     Result getTemperature();
 
-    Result sellDrink(Integer position, Integer count);
+    Result sellDrink(Integer fridge, Integer position, Integer count);
 }

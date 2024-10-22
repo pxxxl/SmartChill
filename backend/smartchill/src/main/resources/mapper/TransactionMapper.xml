@@ -9,6 +9,7 @@
         <result column="drink_id" property="drinkId"/>
         <result column="type" property="type"/>
         <result column="count" property="count"/>
+        <result column="fridge" property="fridge"/>
         <result column="position" property="position"/>
         <result column="time" property="time"/>
     </resultMap>
@@ -16,9 +17,10 @@
     <select id="getDrinkOnSale" resultType="com.minjer.smartchill.entity.dto.Transaction">
         select drink_id,
                sum(IF(type = 0, count, 0)) - sum(IF(type = 1, count, 0)) AS count,
+               fridge,
                position
         from transaction
-        group by drink_id, position
+        group by drink_id, position, fridge
         having sum(IF(type = 0, count, 0)) - sum(IF(type = 1, count, 0)) > 0
     </select>
     <select id="getDrinkSellStatisticsByDate" resultType="com.minjer.smartchill.entity.dto.Transaction">
@@ -28,6 +30,21 @@
         where time between #{begin} and #{end}
         group by drink_id
         having sum(IF(type = 1, count, 0)) > 0
+    </select>
+    <select id="getDrinkOnSaleByFridgeAndOrder" resultType="com.minjer.smartchill.entity.dto.Transaction">
+        select drink_id,
+               sum(IF(type = 0, count, 0)) - sum(IF(type = 1, count, 0)) AS count,
+               fridge,
+               position
+        from transaction
+        <if test="fridge != null &amp;&amp; fridge gte 0">
+            where fridge = #{fridge}
+        </if>
+        group by drink_id, position, fridge
+        having sum(IF(type = 0, count, 0)) - sum(IF(type = 1, count, 0)) > 0
+        <if test="order == true">
+            order by count
+        </if>
     </select>
 
 
