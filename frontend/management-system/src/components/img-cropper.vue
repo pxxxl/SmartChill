@@ -23,7 +23,7 @@ const option = ref({
   centerBox: true, //截图框是否被限制在图片里面
   height: true, //是否按照设备的dpr 输出等比例图片
   infoTrue: false, //true为展示真实输出图片宽高，false展示看到的截图框宽高
-  maxImgSize: 5000, //限制图片最大宽度和高度
+  maxImgSize: 350, //限制图片最大宽度和高度
   enlarge: 1 //图片根据截图框输出比例倍数
 })
 

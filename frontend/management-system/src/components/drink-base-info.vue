@@ -199,7 +199,6 @@ const submit = async () => {
 
         if(!isMock) {
             isLoading.value = true;
-            
             if(form.image instanceof Blob) {
                 const formData = new FormData();
                 const originalFilename = 'default_filename.jpg';    

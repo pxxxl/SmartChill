@@ -4,7 +4,7 @@
             <div class="device-management-title">设备管理</div>
         </div>
         <a-empty v-if="deviceData.length === 0 && !isLoading" description="暂无设备信息" style="position: relative; transform: translate(-50%, -50%); left: 50%; top: 50%" />
-        <icon-loading v-if="isLoading" style="position: relative; transform: translateX(-50%); left: 50%;"/>
+        <icon-loading :size="50" v-if="isLoading" style="position: relative; transform: translateX(-50%); left: 50%;"/>
         <div class="card-container">
             <a-card :title="item.name" v-for="item in deviceData" :key="item.name" class="card">
                 {{ item.desc }}

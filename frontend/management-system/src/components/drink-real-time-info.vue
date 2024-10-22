@@ -21,7 +21,7 @@
     <a-modal v-model:visible="visible" :title="title" @cancel="handleCancel" :on-before-ok="submit" :closable="false">
         <a-form :model="form" ref="formRef" :rules="rules">
         <a-form-item field="id" label="饮品">
-            <a-select :style="{width:'320px'}" placeholder="Please select ..." allow-search @change="onChange" v-model="selVal">
+            <a-select :style="{width:'320px'}" placeholder="Please select ..." allow-search @change="onChange" v-model="form.id">
                 <a-option v-for="item in drinkBaseInfo" :key="item" :value="item.id" :label="item.name"></a-option>
             </a-select>
         </a-form-item>
@@ -92,11 +92,17 @@ const form = reactive({
     count: '',
     position: ''
 });
+const title = ref('补货');
 
 const refreshData = async () => {
     isLoading.value = true;
     try {
-        tableData.value = await getDrinkRealTimeInfoAPI(page.value, pageSize);
+        setTimeout(() => {
+            page.value = 1;
+        }, 0);
+        const realtimeInfoRes = await getDrinkRealTimeInfoAPI(page.value, pageSize);
+        tableData.value = realtimeInfoRes.data.drinks;
+        totalRef.value = realtimeInfoRes.data.total;
     } catch (error) {
         console.log(error);
     } finally {
@@ -131,9 +137,6 @@ const supply = () => {
 const handleCancel = () => {
     formRef.value.resetFields()
     formRef.value.clearValidate()
-    for(let key in form) {
-        form[key] = ''
-    }
     visible.value = false;
 };
 const submit = async () => {
@@ -149,9 +152,10 @@ const submit = async () => {
         else{
             await supplyAPI([form]);
             Message.success('操作成功');
+            handleCancel();
             refreshData();
         }
-        handleCancel();
+        
     } catch (error) {
         console.log(error);     
         return false

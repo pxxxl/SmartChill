@@ -1,8 +1,8 @@
-export const isMock = true
+export const isMock = false
 
 export const mockDrinkInfo = [
     {
-      name: '绿茶',
+      name: '绿茶1111111',
       image: require('@/assets/green-tea.jpg'),
       price: '10',
       temperature: 10,
@@ -71,32 +71,12 @@ export const mockDrinkInfo = [
       temperature: 10,
       count: 10
     },
-    {
-      name: '绿茶',
-      image: require('@/assets/green-tea.jpg'),
-      price: '5',
-      temperature: 10,
-      count: 10
-    },
-    {
-      name: '绿茶',
-      image: require('@/assets/green-tea.jpg'),
-      price: '5',
-      temperature: 10,
-      count: 10
-    },
-    {
-      name: '绿茶',
-      image: require('@/assets/green-tea.jpg'),
-      price: '5',
-      temperature: 10,
-      count: 10
-    },
-    {
-      name: '绿茶',
-      image: require('@/assets/green-tea.jpg'),
-      price: '5',
-      temperature: 10,
-      count: 10
-    },
-  ]
+]
+
+export const mockGraphData = [
+  { value: 1048, name: 'drink 1' },
+  { value: 735, name: 'drink 2' },
+  { value: 580, name: 'drink 3' },
+  { value: 484, name: 'drink 4' },
+  { value: 300, name: 'drink 5' }
+]
