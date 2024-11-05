@@ -1,4 +1,4 @@
-export const isMock = false
+export const isMock = true
 
 export const mockDrinkRealtimeInfo = [
     {
@@ -147,14 +147,41 @@ export const mockDrinkBaseInfo = [
 ]
 
 export const mockDeviceInfo = [
-    { name: '设备1', desc: '这是设备1的描述' },
-    { name: '设备2', desc: '这是设备2的描述' },
-    { name: '设备3', desc: '这是设备3的描述' },
-    { name: '设备4', desc: '这是设备4的描述' },
-    { name: '设备5', desc: '这是设备5的描述' },
-    { name: '设备6', desc: '这是设备6的描述' },
-    { name: '设备7', desc: '这是设备7的描述' },
-    { name: '设备8', desc: '这是设备8的描述' },
-    { name: '设备9', desc: '这是设备9的描述' },
-    { name: '设备10', desc: '这是设备10的描述' },
+    {
+      "name": "fridge_1",
+      "id": 1,
+      "items": [
+        {
+          "name": "Camera 1",
+          "id": "dwfiei",
+          "position": "1",
+          "status": "on"
+        },
+        {
+          "name": "Temp 1",
+          "id": "dwfiei",
+          "position": "",
+          "status": "off"
+        }
+      ]
+    },
+    {
+      "name": "fridge_2",
+      "id": 2,
+      "items": [
+        {
+          "name": "Camera 1",
+          "id": "dwfiei",
+          "position": "1",
+          "status": "on"
+        },
+        {
+          "name": "Temp 1",
+          "id": "dwfiei",
+          "position": "",
+          "status": "off"
+        }
+      ]
+    }
 ]
+
