@@ -7,7 +7,7 @@
                 <template #icon><icon-printer /></template>
                 设备管理
             </a-menu-item>
-            <a-sub-menu key="1">
+            <a-sub-menu >
                 <template #icon><icon-common /></template>
                 <template #title>饮品管理</template>
                 <a-menu-item key="/drink/base">饮品基本信息</a-menu-item>

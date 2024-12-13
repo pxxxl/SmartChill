@@ -86,7 +86,7 @@ const getGraphData = async () => {
           value: count
         };
       });
-      if (graphData.length === 0) {
+      if (graphData.length === 0 || !graphData ) {
         showGraph.value = false;
         showFailToast({
           message: '暂无数据'
@@ -96,6 +96,7 @@ const getGraphData = async () => {
       }
       return graphData;
     } catch (error) {
+      onClose()
       console.error(error);
     } finally {
       closeToast();
@@ -157,6 +158,16 @@ defineExpose({ open });
     overflow: hidden; 
     max-width: 900px;
 }
+.van-cell {
+    justify-content: space-between !important;
+}.van-cell__value {
+    white-space: nowrap !important;
+    display: block;
+}
+.van-cell__title{
+  white-space: nowrap !important;
+  flex: none !important;
+}
 .cell{
     display: relative;
     left: 50%;
@@ -166,10 +177,11 @@ defineExpose({ open });
     color: aliceblue !important;
     width: calc(100% - 20px) !important;
 }
-@media screen and (max-width: 376px) {
+/* @media screen and (max-width: 400px) {
     .van-cell__title, .van-cell__value {
+        word-wrap: none !important;
         flex: none !important;
-        margin-right: 55px !important;
+        margin-right: 13vw !important;
     }   
 }
 @media screen and (max-width: 320px) {
@@ -177,7 +189,7 @@ defineExpose({ open });
         flex: none !important;
         margin-right: 10px !important;
     }   
-}
+} */
 .empty-container {
   display: flex;
   justify-content: center;

@@ -4,7 +4,9 @@
         <div class="drink-info-title">饮品基本信息</div>
         <a-button type="primary" @click='handleDrink(false)' style="margin-left: 20px;">添加饮品</a-button>
     </div>
-    <a-table :columns="columns" :data="tableData" row-key="name" page-position="bottom" :loading="isLoading">
+    <a-table :data="tableData" row-key="name" page-position="bottom" :loading="isLoading"     :virtualListProps="{
+      height: 560,
+    }" :pagination="false">
         <template #columns>
             <a-table-column title="名称" data-index="name"></a-table-column>
             <a-table-column title="图片">
@@ -13,7 +15,7 @@
                 </template>
             </a-table-column>
             <a-table-column title="价格" data-index="price"></a-table-column>
-            <a-table-column title="操作" width="200">
+            <a-table-column title="操作" :width="200">
                 <template #cell="{ record }" >
                     <a-button type="primary" @click='handleDrink(record)' style="margin-right: 10px;">编辑</a-button>
                     <a-button type="danger" @click="handleDeleteDrink(record) ">删除</a-button>
@@ -108,32 +110,13 @@ const resizeImgRef = ref({
   url: '',
   div: ''
 })
-const columns = ref([
-{
-    title: '名称',
-    dataIndex: 'name',
-    key: 'name',
-},
-{
-    title: '图片',
-    dataIndex: 'image',
-    key: 'image',
-    customRender: 'image',
-},
-{
-    title: '价格',
-    dataIndex: 'price',
-    key: 'price',
-    customRender: 'price',
-}
-]);
 const formRef = ref();
 
 
 const visible = ref(false);
 const form = reactive({
     name: '',
-    price: '',
+    price: 0,
     image: ''
 });
 

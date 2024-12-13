@@ -1,4 +1,4 @@
-export const isMock = false
+export const isMock = true
 
 export const mockDrinkInfo = [
     {
@@ -79,4 +79,42 @@ export const mockGraphData = [
   { value: 580, name: 'drink 3' },
   { value: 484, name: 'drink 4' },
   { value: 300, name: 'drink 5' }
+]
+export const mockDeviceInfo = [
+  {
+    "name": "fridge_1",
+    "id": 1,
+    "items": [
+      {
+        "name": "Camera 1",
+        "id": "dwfiei",
+        "position": "1",
+        "status": "on"
+      },
+      {
+        "name": "Temp 1",
+        "id": "dwfiei",
+        "position": "",
+        "status": "off"
+      }
+    ]
+  },
+  {
+    "name": "fridge_2",
+    "id": 2,
+    "items": [
+      {
+        "name": "Camera 1",
+        "id": "dwfiei",
+        "position": "1",
+        "status": "on"
+      },
+      {
+        "name": "Temp 1",
+        "id": "dwfiei",
+        "position": "",
+        "status": "off"
+      }
+    ]
+  }
 ]

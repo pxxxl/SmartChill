@@ -3,13 +3,11 @@
         <div class="device-management-header">
             <div class="device-management-title">设备管理</div>
         </div>
-        <a-empty v-if="deviceData.length === 0 && !isLoading" description="暂无设备信息" style="position: relative; transform: translate(-50%, -50%); left: 50%; top: 50%" />
-        <icon-loading :size="50" v-if="isLoading" style="position: relative; transform: translateX(-50%); left: 50%;"/>
-        <div class="card-container">
-            <a-card :title="item.name" v-for="item in deviceData" :key="item.name" class="card">
-                {{ item.desc }}
-            </a-card>
-        </div>
+        <a-table :columns="columns" :data="deviceData" :span-method="dataSpanMethod" :bordered="{wrapper: true, cell: true}" :loading="isLoading" page-position="bottom">
+            <template #action="{ record }">
+                <a-button type="primary" @click="handle(record)">test</a-button>
+            </template>
+        </a-table>
     </div>
 </template>
 
@@ -20,22 +18,92 @@ import { getDeviceInfoAPI } from '@/api/device';
 
 const isLoading = ref(false);
 const deviceData = ref([]);
-
-if(isMock) {
-    deviceData.value = mockDeviceInfo;
-    deviceData.value = []
+const deviceNumberPerFridge = ref(0);
+const handle = (record) => {
+    console.log(mockDeviceInfo)
+    console.log(deviceData.value)
+    console.log(record);
 }
-else{
-    onMounted(() => {
+const columns=[
+    {
+        title: '冰柜名称',
+        dataIndex: 'fridgeName',
+    },
+    {
+        title: '设备id',
+        dataIndex: 'id',
+    },
+    {
+        title: '设备名称',
+        dataIndex: 'name',
+    },
+    {
+        title: '设备状态',
+        dataIndex: 'status',
+    },
+    {
+        title: '层数',
+        dataIndex: 'position',
+    },
+    {
+        title: '操作',
+        slotName: 'action',
+    },
+];
+
+const processedList = (data) => {
+    return data.flatMap(fridge => 
+        fridge.items.map(item => ({
+                fridgeName: fridge.name,
+                name: item.name,
+                id: item.id,
+                position: item.position,
+                status: item.status
+            })
+        )
+    );
+}
+const dataSpanMethod = ({ record, column, rowIndex,  }) => {
+  if (column.dataIndex === 'fridgeName') {
+    const prevRecord = deviceData.value[rowIndex - 1];
+    if (prevRecord && prevRecord.fridgeName === record.fridgeName) {
+      return { rowspan: 0, colspan: 0 };
+    }
+    let rowspan = 1;
+    for (let i = rowIndex + 1; i < deviceData.value.length; i++) {
+      if (deviceData.value[i].fridgeName === record.fridgeName) {
+        rowspan++;
+      } else {
+        break;
+      }
+    }
+    return { rowspan, colspan: 1 };
+  }
+  return { rowspan: 1, colspan: 1 };
+};
+const initData = () => {
+    if(isMock) {
+        deviceData.value = processedList(mockDeviceInfo.slice());
+        deviceNumberPerFridge.value = mockDeviceInfo[0].items.length
+    }
+    else{
         isLoading.value = true;
         getDeviceInfoAPI().then(res => {
-            deviceData.value = res.data.device;
+            deviceNumberPerFridge.value = res.data[0].items.length;
+            deviceData.value = processedList(res.data);
+        })
+        .catch(err => {
+            console.log(err);
         })
         .finally(() => {
             isLoading.value = false;
         })
-    })
+    }
 }
+onMounted(() => {
+    initData();
+})
+
 </script>
 
 <style scoped>
@@ -51,17 +119,5 @@ else{
 .device-management {
     width: 100%;
     height: 100%;
-}
-.card-container {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    padding-left: 20px;
-    /* padding-right: 20px; */
-}
-.card{
-    width: auto;
-    margin-top: 20px;
-    margin-right: 20px;
 }
 </style>

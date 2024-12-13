@@ -4,7 +4,15 @@ export const getTemperature = () => {
     return request.get('/user/temperature')
 }
 
-export const getDrinkInfo = (page, pageSize) => {
-    return request.get(`/user/drink?page=${page}&pagesize=${pageSize}`)
+export const getDrinkInfo = (page, pageSize, order = false, fridge) => {
+    if(fridge === undefined) {
+        return request({
+            url: "/user/drink?pagesize=" + pageSize + "&page=" + page + "&order=" + order,
+            method: "get",
+        });
+    }
+    return request({
+        url: "/user/drink?pagesize=" + pageSize + "&page=" + page + "&order=" + order + "&fridge=" + fridge,
+        method: "get",
+    });
 }
-
