@@ -3,6 +3,7 @@ package com.minjer.smartchill.mapper;
 import com.minjer.smartchill.entity.dto.Transaction;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -16,6 +17,8 @@ public interface TransactionMapper {
 
     ArrayList<Transaction> getDrinkOnSaleByFridgeAndOrder(Integer fridge, Boolean order);
 
+    @Select("select drink_id from transaction where fridge = #{fridge} and position = #{position} ORDER BY time DESC LIMIT 1")
+    Integer getDrinkIdByPositionInteger(Integer fridge ,Integer position);
 
     ArrayList<Transaction> getDrinkSellStatisticsByDate(LocalDateTime begin, LocalDateTime end);
 }

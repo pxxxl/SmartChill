@@ -26,7 +26,7 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
 
 oss:
   endpoint: ${oss.endpoint}
@@ -41,3 +41,4 @@ github:
 pics:
   url: ${pics.url}
   token: ${pics.token}
+

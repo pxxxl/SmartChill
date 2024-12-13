@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 @Slf4j
 @RestController("deviceController")
@@ -31,57 +29,41 @@ public class DeviceController {
 
     @GetMapping("/status")
     public Result getDevicesStatus() {
-        // TODO: 目前是写死的，等待接入真实数据 (Time: 2024/10/22 9:04)
         log.info("GetRequest: /admin/device/status");
-        // 构造 fridge_1 items 列表
-        List<Map<String, Object>> fridge1Items = new ArrayList<>();
-        Map<String, Object> camera1Fridge1 = new HashMap<>();
-        camera1Fridge1.put("name", "Camera 1");
-        camera1Fridge1.put("id", "dwfiei");
-        camera1Fridge1.put("position", "1");
-        camera1Fridge1.put("status", "on");
 
-        Map<String, Object> temp1Fridge1 = new HashMap<>();
-        temp1Fridge1.put("name", "Temp 1");
-        temp1Fridge1.put("id", "dwfiei");
-        temp1Fridge1.put("position", "");
-        temp1Fridge1.put("status", "off");
+        ArrayList<HashMap<String, Object>> result = new ArrayList<>();
 
-        fridge1Items.add(camera1Fridge1);
-        fridge1Items.add(temp1Fridge1);
+        HashMap<String, Object> fridge1 = new HashMap<>();
+        fridge1.put("id", "1");
+        fridge1.put("name", "Fridge");
+        ArrayList<HashMap<String, Object>> fridgeItems = new ArrayList<>();
 
-        // 构造 fridge_2 items 列表
-        List<Map<String, Object>> fridge2Items = new ArrayList<>();
-        Map<String, Object> camera1Fridge2 = new HashMap<>();
-        camera1Fridge2.put("name", "Camera 1");
-        camera1Fridge2.put("id", "dwfiei");
-        camera1Fridge2.put("position", "1");
-        camera1Fridge2.put("status", "on");
+        HashMap<String, Object> item1 = new HashMap<>();
+        item1.put("id", "2");
+        item1.put("name", "TemperatureSensor_1");
+        item1.put("status", "on");
+        item1.put("position", "Inner");
+        fridgeItems.add(item1);
 
-        Map<String, Object> temp1Fridge2 = new HashMap<>();
-        temp1Fridge2.put("name", "Temp 1");
-        temp1Fridge2.put("id", "dwfiei");
-        temp1Fridge2.put("position", "");
-        temp1Fridge2.put("status", "25℃");
+        HashMap<String, Object> item2 = new HashMap<>();
+        item2.put("id", "3");
+        item2.put("name", "TemperatureSensor_2");
+        item2.put("status", "on");
+        item2.put("position", "Outer");
+        fridgeItems.add(item2);
 
-        fridge2Items.add(camera1Fridge2);
-        fridge2Items.add(temp1Fridge2);
+        HashMap<String, Object> item3 = new HashMap<>();
+        item3.put("id", "4");
+        item3.put("name", "Camera_1");
+        item3.put("status", "on");
+        item3.put("position", "1");
+        fridgeItems.add(item3);
 
-        // 构造 fridge_1 和 fridge_2 的 Map
-        Map<String, Object> fridge1 = new HashMap<>();
-        fridge1.put("name", "fridge_1");
-        fridge1.put("items", fridge1Items);
+        fridge1.put("items", fridgeItems);
 
-        Map<String, Object> fridge2 = new HashMap<>();
-        fridge2.put("name", "fridge_2");
-        fridge2.put("items", fridge2Items);
+        result.add(fridge1);
 
-        // 构造 data 列表
-        List<Map<String, Object>> dataList = new ArrayList<>();
-        dataList.add(fridge1);
-        dataList.add(fridge2);
-
-        return new Result(200, "目前为测试数据", dataList);
+        return Result.success(result);
     }
 
 }
