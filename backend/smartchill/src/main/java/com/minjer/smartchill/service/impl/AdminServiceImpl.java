@@ -50,6 +50,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     private TransactionMapper transactionMapper;
+    
+    @Autowired
+    private CameraMapper cameraMapper;
 
     @Override
     public Result login(String username, String password) {
@@ -294,6 +297,16 @@ public class AdminServiceImpl implements AdminService {
             // 2.5. 更新缓存
             redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
         }
+    }
+
+    @Override
+    public Result getCamerasInfo() {
+        // 1. 获取摄像头信息
+        String recentPhoto = cameraMapper.getRecentPhoto();
+
+        log.info("获取摄像头信息成功");
+
+        return Result.success(recentPhoto);
     }
 
 }

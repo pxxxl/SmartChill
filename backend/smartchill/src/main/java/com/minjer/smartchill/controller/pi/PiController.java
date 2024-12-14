@@ -25,8 +25,8 @@ import java.util.UUID;
 @RestController("piController")
 @RequestMapping("/node")
 public class PiController {
-    private static final String INNER_ID = "1";
-    private static final String OUTER_ID = "2";
+    private static final String INNER_ID = "2";
+    private static final String OUTER_ID = "3";
 
     @Autowired
     private TemperatureMapper temperatureMapper;

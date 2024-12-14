@@ -105,6 +105,7 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
         </dependency>
+
         <!-- 如果使用 Redis 的序列化工具 Jackson -->
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>

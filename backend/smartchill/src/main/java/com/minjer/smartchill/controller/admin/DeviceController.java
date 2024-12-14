@@ -27,6 +27,13 @@ public class DeviceController {
         return adminService.getDevicesInfo();
     }
 
+    @GetMapping("/camera")
+    public Result getCamerasInfo() {
+        log.info("GetRequest: /admin/device/camera");
+
+        return adminService.getCamerasInfo();
+    }
+
     @GetMapping("/status")
     public Result getDevicesStatus() {
         log.info("GetRequest: /admin/device/status");

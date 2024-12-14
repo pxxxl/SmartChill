@@ -20,4 +20,6 @@ public interface AdminService {
     Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos);
 
     void updateDrinkOnSale();
+
+    Result getCamerasInfo();
 }
