@@ -15,3 +15,11 @@ export const loginAPI = (data) => {
         data,
     });
 }  
+
+export const getCameraAPI = (data) => {
+    return request({
+        url: "/admin/device/camera",
+        method: "get",
+        data,
+    });
+}

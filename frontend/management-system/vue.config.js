@@ -8,7 +8,7 @@ module.exports = defineConfig({
     },
     proxy: {
       '/api': {
-        target: 'http://68f705a6.r7.cpolar.top',
+        target: 'http://61fe7d36.r7.cpolar.top',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''
