@@ -16,7 +16,6 @@ export const loginAPI = (data) => {
     });
 }  
 
-// /admin/device/camera
 export const getCameraAPI = (data) => {
     return request({
         url: "/admin/device/camera",

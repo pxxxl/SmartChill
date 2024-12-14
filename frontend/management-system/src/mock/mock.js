@@ -1,4 +1,4 @@
-export const isMock = true
+export const isMock = false
 
 export const mockDrinkRealtimeInfo = [
     {

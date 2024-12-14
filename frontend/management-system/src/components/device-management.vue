@@ -34,12 +34,14 @@ const showImage = (record) => {
         return
     }
     isLoading.value = true;
-    getCameraAPI(record.id).then(res => {
-        const base64Data = res.data;
+    getCameraAPI().then(res => {
+        let base64Data = res.data;
+        console.log(base64Data);
+        base64Data = base64Data.replace(/^data:image\/(png|jpeg);base64,/, '');
         const byteCharacters = atob(base64Data);
         const byteNumbers = new Array(byteCharacters.length);
         for (let i = 0; i < byteCharacters.length; i++) {
-          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        byteNumbers[i] = byteCharacters.charCodeAt(i);
         }
         const byteArray = new Uint8Array(byteNumbers);
         const blob = new Blob([byteArray], { type: 'image/jpeg' });

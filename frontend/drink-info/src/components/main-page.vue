@@ -33,7 +33,7 @@
     <van-loading type="spinner" size="20px"/>
     <span style="font-size: 16px;line-height: 23px;margin-left: 5px;color: darkgray;">加载中...</span>
   </div>
-  <div class="screen-button">
+  <div class="screen-button" v-if="false">
     <van-icon :size="30" color="#f0f0f0" name="shop-o" @click="()=>{showPicker = true}"/>
   </div>
   <van-popup v-model:show="showPicker" round position="bottom">
