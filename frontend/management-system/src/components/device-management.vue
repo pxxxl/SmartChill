@@ -5,7 +5,8 @@
         </div>
         <a-table :columns="columns" :data="deviceData" :span-method="dataSpanMethod" :bordered="{wrapper: true, cell: true}" :loading="isLoading" page-position="bottom">
             <template #action="{ record }">
-                <a-button type="primary" @click="handle(record)">test</a-button>
+                <a-button v-if="record.name.toLowerCase().startsWith('camera')" type="primary" @click="showImage(record)">查看</a-button>
+                <a-image-preview v-model:visible="imagePreviewVisible" :src="cameraData" @close="onClose"/>
             </template>
         </a-table>
     </div>
@@ -13,16 +14,44 @@
 
 <script setup>
 import { onMounted, ref } from 'vue';
-import { isMock, mockDeviceInfo } from '@/mock/mock'
+import { isMock, mockDeviceInfo, mockDrinkBaseInfo } from '@/mock/mock'
 import { getDeviceInfoAPI } from '@/api/device';
+import { getCameraAPI } from '@/api/user';
 
 const isLoading = ref(false);
 const deviceData = ref([]);
 const deviceNumberPerFridge = ref(0);
-const handle = (record) => {
+const cameraData = ref([]);
+const imagePreviewVisible = ref(false);
+
+const showImage = (record) => {
     console.log(mockDeviceInfo)
     console.log(deviceData.value)
     console.log(record);
+    if(isMock) {
+        cameraData.value = mockDrinkBaseInfo[0].image;
+        imagePreviewVisible.value = true;
+        return
+    }
+    isLoading.value = true;
+    getCameraAPI(record.id).then(res => {
+        const base64Data = res.data;
+        const byteCharacters = atob(base64Data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], { type: 'image/jpeg' });
+        cameraData.value = URL.createObjectURL(blob);
+        imagePreviewVisible.value = true;
+    }).finally(() => {
+        isLoading.value = false;
+    })
+}
+const onClose = () => {
+    cameraData.value = '';
+    imagePreviewVisible.value = false;
 }
 const columns=[
     {
