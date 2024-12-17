@@ -33,7 +33,7 @@
     <van-loading type="spinner" size="20px"/>
     <span style="font-size: 16px;line-height: 23px;margin-left: 5px;color: darkgray;">加载中...</span>
   </div>
-  <div class="screen-button" v-if="false">
+  <div class="screen-button" v-if="true">
     <van-icon :size="30" color="#f0f0f0" name="shop-o" @click="()=>{showPicker = true}"/>
   </div>
   <van-popup v-model:show="showPicker" round position="bottom">
@@ -51,7 +51,7 @@ import { ref, onMounted, onUnmounted, nextTick } from 'vue';
 import { isMock, mockDrinkInfo, mockDeviceInfo } from '@/mock/mock';
 import { getTemperature, getDrinkInfo } from '@/api/User';
 import { showLoadingToast, closeToast,Empty } from 'vant';
-import { getDeviceInfoAPI } from '@/api/device';
+// import { getDeviceInfoAPI } from '@/api/device';
 import saleGraph from '@/components/sale-graph.vue';
 
 const currentTemperature = ref();
@@ -75,6 +75,8 @@ const open = () => {
 };
 
 const onRefresh = async (fridgeId) => {
+  console.log('refresh');
+  
   if (isMock) {
     setTimeout(() => {
       drinks.value = mockDrinkInfo;
@@ -83,7 +85,7 @@ const onRefresh = async (fridgeId) => {
     }, 1000);
   } else {
     try{
-      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(1, pageSize, false, fridgeId)]);
+      const [temperature, drinkInfo] = await Promise.all([getTemperature(), getDrinkInfo(1, pageSize, true, fridgeId)]);
       currentTemperature.value = temperature.data.inner;
       drinks.value = drinkInfo.data.drinks;
       page.value = 2;
@@ -117,6 +119,7 @@ const loadMoreData = async () => {
       if (drinkInfo.data.drinks.length < pageSize) {
         enableLoadMore.value = false;
         observer.unobserve(bottom.value);
+        return
       }
       checkContentHeight();
     } catch (error) {
@@ -158,8 +161,8 @@ const initData = async () => {
         drinks.value = drinkInfo.data.drinks;
         page.value += 1;
         checkContentHeight();
-        const deviceInfoRes = await getDeviceInfoAPI();
-        fridgeList.value = processedList(deviceInfoRes.data);
+        // const deviceInfoRes = await getDeviceInfoAPI();
+        // fridgeList.value = processedList(deviceInfoRes.data);
       } catch (error) {
         console.error(error);
       } finally {
@@ -174,6 +177,8 @@ const checkContentHeight = async () => {
   const contentHeight = document.querySelector('#app').offsetHeight;
   const windowHeight = window.innerHeight;
   if (contentHeight < windowHeight) {
+    console.log("chudi");
+    
     await loadMoreData();
   }
 };
@@ -187,6 +192,7 @@ const bottom = ref(null);
 
 const observer = new IntersectionObserver(async (entries) => {
   if (entries[0].isIntersecting) {
+    console.log("chudi");
     await loadMoreData();
   }
 }, {

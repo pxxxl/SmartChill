@@ -241,6 +241,7 @@ public class AdminServiceImpl implements AdminService {
 
         // 2. 更新饮品信息
         if (drinkOnSales != null) {
+            log.info("更新在售饮品信息，当前剩余情况：{}", drinkOnSales);
             // 2.1 更新最新的温度
             BigDecimal temperature = temperatureMapper.getRecentInsideTemperature();
 

@@ -6,19 +6,18 @@ import lombok.extern.slf4j.Slf4j;
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
-import org.apache.tomcat.util.json.JSONParser;
-import org.codehaus.jettison.json.JSONObject;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.regex.Pattern;
 
 @Slf4j
 public class RecognizeUtil {
     private static final String RECOGNIZE_URL = "http://192.168.5.2:5987/img";
 
-    public static Boolean recognize(MultipartFile multipartFile){
+    public static Boolean recognize(MultipartFile multipartFile) {
         log.info("Recognize: multipartFile={}", multipartFile.getOriginalFilename());
         try {
             File file = convert(multipartFile);
@@ -49,6 +48,7 @@ public class RecognizeUtil {
                 .post(body)
                 .build();
         log.info("Request: {}", request);
+        String change = "";
         // 发送请求
         try {
             okhttp3.Response response = client.newCall(request).execute();
@@ -56,28 +56,34 @@ public class RecognizeUtil {
                 log.error("Recognize failed: {}", response);
                 return false;
             }
-
-            log.info("Recognize result: {}", response.body().string());
             String result = response.body().string();
+            log.info("Recognize result1: {}", result);
+
 
             // parse result
-            JSONParser parser = new JSONParser(result);
-            JSONObject json = (JSONObject) parser.parse();
-            Integer change = (Integer) json.get("change");
+            log.info("Begin to parse result");
+            Pattern pattern = Pattern.compile("\"change\":(-?\\d+)");
+            java.util.regex.Matcher matcher = pattern.matcher(result);
+            if (matcher.find()) {
+                change = matcher.group(1);
+            }
 
             log.info("Recognize change: {}", change);
 
-            if (!change.equals(0)){
+            if (!change.equals("0")) {
+                log.info("Recognize success - In");
                 return true;
             }
 
         } catch (Exception e) {
             log.error("Recognize Exception: {}", e.getMessage());
+
             return false;
         }
 
         return false;
     }
+
     public static File convert(MultipartFile file) throws IOException {
         // 检查 MultipartFile 是否为空
         if (file.isEmpty()) {

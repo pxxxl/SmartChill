@@ -1,20 +1,19 @@
 const { defineConfig } = require('@vue/cli-service')
 module.exports = defineConfig({
   transpileDependencies: true,
-  
+
   devServer: {
     client: {
-      overlay: false
+      overlay: false,
     },
     proxy: {
       '/api': {
-        target: 'http://61fe7d36.r7.cpolar.top',
+        target: 'http://127.0.0.1:18080',
         changeOrigin: true,
         pathRewrite: {
-          '^/api': ''
+          '^/api': '',
         },
-      }
-      
-    }
-  }
+      },
+    },
+  },
 })

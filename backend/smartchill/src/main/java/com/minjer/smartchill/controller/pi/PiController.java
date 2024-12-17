@@ -6,6 +6,7 @@ import com.minjer.smartchill.exception.BaseException;
 import com.minjer.smartchill.mapper.CameraMapper;
 import com.minjer.smartchill.mapper.TemperatureMapper;
 import com.minjer.smartchill.mapper.TransactionMapper;
+import com.minjer.smartchill.service.UserService;
 import com.minjer.smartchill.utils.RecognizeUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,6 +37,9 @@ public class PiController {
 
     @Autowired
     private CameraMapper cameraMapper;
+
+    @Autowired
+    private UserService userService;
 
     @PostMapping("/temperature")
     public void postTemperature(@RequestBody TemperatureVO temperatureVO) {
@@ -84,13 +88,14 @@ public class PiController {
         if (result) {
             log.info("Recognize success");
             // TODO 映射相机和冰箱的关系
-            int fridgeId = 3;
+            int fridgeId = 1;
             int position = 1;
-            Integer drinkId = transactionMapper.getDrinkIdByPositionInteger(fridgeId, position);
-            if (drinkId != null) {
-                log.info("DrinkId: {} sold", drinkId);
-                transactionMapper.insertTransaction(drinkId, (byte) 1, fridgeId, 1, position, LocalDateTime.now());
-            }
+//            Integer drinkId = transactionMapper.getDrinkIdByPositionInteger(fridgeId, position);
+//            if (drinkId != null) {
+//                log.info("DrinkId: {} sold", drinkId);
+//                transactionMapper.insertTransaction(drinkId, (byte) 1, fridgeId, 1, position, LocalDateTime.now());
+//            }
+            userService.sellDrink(fridgeId, position, 1);
         }
     }
 }
