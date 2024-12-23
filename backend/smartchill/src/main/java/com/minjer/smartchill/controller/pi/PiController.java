@@ -5,7 +5,6 @@ import com.minjer.smartchill.enums.ResultEnum;
 import com.minjer.smartchill.exception.BaseException;
 import com.minjer.smartchill.mapper.CameraMapper;
 import com.minjer.smartchill.mapper.TemperatureMapper;
-import com.minjer.smartchill.mapper.TransactionMapper;
 import com.minjer.smartchill.service.UserService;
 import com.minjer.smartchill.utils.RecognizeUtil;
 import lombok.extern.slf4j.Slf4j;
@@ -31,9 +30,6 @@ public class PiController {
 
     @Autowired
     private TemperatureMapper temperatureMapper;
-
-    @Autowired
-    private TransactionMapper transactionMapper;
 
     @Autowired
     private CameraMapper cameraMapper;
