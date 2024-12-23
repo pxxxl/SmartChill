@@ -54,6 +54,7 @@ public class PiController {
         BigDecimal temperature = new BigDecimal(temperatureVO.getTemperature());
         if (temperature.compareTo(new BigDecimal(0)) < 0) {
             log.error("Temperature is less than 0");
+
             return;
         }
 
