@@ -17,6 +17,9 @@ public class DrinkCountInfo implements Serializable {
     @JsonProperty("count")
     private Integer count;
 
+    @JsonProperty("fridge")
+    private Integer fridge;
+
     @JsonProperty("position")
     private Integer position;
 }

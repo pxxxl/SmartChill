@@ -1,31 +1,34 @@
 package com.minjer.smartchill.service.impl;
 
+import com.minjer.smartchill.constant.RedisConstant;
 import com.minjer.smartchill.entity.dto.Account;
 import com.minjer.smartchill.entity.dto.Drink;
+import com.minjer.smartchill.entity.dto.Transaction;
 import com.minjer.smartchill.entity.pojo.DrinkCountInfo;
 import com.minjer.smartchill.entity.result.Result;
 import com.minjer.smartchill.entity.vo.DeviceInfo;
 import com.minjer.smartchill.entity.vo.DrinkOnSale;
 import com.minjer.smartchill.enums.ResultEnum;
 import com.minjer.smartchill.exception.BaseException;
-import com.minjer.smartchill.mapper.AccountMapper;
-import com.minjer.smartchill.mapper.DeviceMapper;
-import com.minjer.smartchill.mapper.DrinkMapper;
-import com.minjer.smartchill.mapper.TemperatureMapper;
+import com.minjer.smartchill.mapper.*;
 import com.minjer.smartchill.service.AdminService;
+import com.minjer.smartchill.service.RedisService;
 import com.minjer.smartchill.utils.AccountUtil;
 import com.minjer.smartchill.utils.JwtUtil;
+import com.minjer.smartchill.utils.TemperatureUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
 @Slf4j
 @Service("adminService")
 public class AdminServiceImpl implements AdminService {
@@ -40,10 +43,16 @@ public class AdminServiceImpl implements AdminService {
     private DrinkMapper drinkMapper;
 
     @Autowired
-    private RedisTemplate redisTemplate;
+    private RedisService redisService;
 
     @Autowired
     private TemperatureMapper temperatureMapper;
+
+    @Autowired
+    private TransactionMapper transactionMapper;
+    
+    @Autowired
+    private CameraMapper cameraMapper;
 
     @Override
     public Result login(String username, String password) {
@@ -67,7 +76,7 @@ public class AdminServiceImpl implements AdminService {
 
         // 构建Map
         Map<String, Object> map = new HashMap<>();
-        map.put("Token", token);
+        map.put("Authorization", token);
 
         return Result.success(map);
     }
@@ -142,7 +151,7 @@ public class AdminServiceImpl implements AdminService {
             // 2. 创建饮品信息
             drinkMapper.insertDrink(drink.getName(), drink.getPrice(), drink.getImage());
             log.info("创建饮品信息成功, name: {}, price: {}, image: {}", drink.getName(), drink.getPrice(), drink.getImage());
-        }else {
+        } else {
             // 2. 更新饮品信息
             drinkMapper.updateDrink(drink.getName(), drink.getPrice(), drink.getImage());
             log.info("更新饮品信息成功, name: {}, price: {}, image: {}", drink.getName(), drink.getPrice(), drink.getImage());
@@ -155,15 +164,16 @@ public class AdminServiceImpl implements AdminService {
     @Transactional
     public Result addDrink(ArrayList<DrinkCountInfo> drinkCountInfos) {
         // 从缓存中获取在售饮品信息
-        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisTemplate.opsForValue().get("drinkList");
+        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get("drinkList");
 
         // 对提交的补货信息逐个检查
         for (DrinkCountInfo drinkCountInfo : drinkCountInfos) {
+            log.info("补货信息：{}", drinkCountInfo);
             // 0. 检查补货信息是否合法
-            if (drinkCountInfo.getCount() <= 0 || drinkCountInfo.getPosition() <= 0) {
-                log.error("补货信息不合法, count: {}, position: {}", drinkCountInfo.getCount(), drinkCountInfo.getPosition());
+            if (drinkCountInfo.getCount() <= 0 || drinkCountInfo.getPosition() <= 0 || drinkCountInfo.getFridge() <= 0) {
+                log.error("补货信息不合法, count: {}, position: {}, fridge: {}", drinkCountInfo.getCount(), drinkCountInfo.getPosition(), drinkCountInfo.getFridge());
                 throw new BaseException(ResultEnum.UNPROCESABLE_ENTITY);
-            }else if (drinkCountInfo.getDrinkId() == null) {
+            } else if (drinkCountInfo.getDrinkId() == null) {
                 log.error("饮品ID为空");
                 throw new BaseException(ResultEnum.UNPROCESABLE_ENTITY);
             }
@@ -171,20 +181,22 @@ public class AdminServiceImpl implements AdminService {
             // 1. 检查饮品是否存在
             Drink drink = drinkMapper.getDrinkById(drinkCountInfo.getDrinkId());
 
-            if(drink == null) {
+            if (drink == null) {
                 log.error("饮品不存在, drinkId: {}", drinkCountInfo.getDrinkId());
                 throw new BaseException(ResultEnum.DRINK_NOT_EXIST);
             }
 
-            // 2. 判断饮料是否销售完毕，如果未销售完毕则不允许补货
+            // 2. 判断该冰箱该位置是否已经售空
             if (drinkOnSales != null) {
                 for (DrinkOnSale drinkOnSale : drinkOnSales) {
-                    if (drinkOnSale.getDrinkId().equals(drinkCountInfo.getDrinkId()) && drinkOnSale.getCount() != 0) {
-                        log.error("饮品{}未销售完毕，不允许补货", drink.getName());
+                    if (drinkOnSale.getFridge().equals(drinkCountInfo.getFridge())
+                            && drinkOnSale.getPosition().equals(drinkCountInfo.getPosition())
+                            && drinkOnSale.getCount() != 0) {
+                        log.error("饮品{}未售空, fridge: {}, position: {}，不允许补货", drink.getName(), drinkCountInfo.getFridge(), drinkCountInfo.getPosition());
                         throw new BaseException(ResultEnum.DRINK_UNSOLD);
                     }
                 }
-            }else {
+            } else {
                 // 2.1 如果缓存中没有饮品信息，则进行初始化写入
                 drinkOnSales = new ArrayList<>();
             }
@@ -195,6 +207,7 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSale.setDrinkId(drink.getId());
             drinkOnSale.setName(drink.getName());
             drinkOnSale.setPrice(drink.getPrice());
+            drinkOnSale.setFridge(drinkCountInfo.getFridge());
             drinkOnSale.setPosition(drinkCountInfo.getPosition());
             drinkOnSale.setCount(drinkCountInfo.getCount());
             drinkOnSale.setImage(drink.getImage());
@@ -205,13 +218,96 @@ public class AdminServiceImpl implements AdminService {
             drinkOnSale.setCreateTemperature(temperature);
 
             drinkOnSales.add(drinkOnSale);
+
+            // 4. 更新交易表
+            transactionMapper.insertTransaction(drink.getId(), (byte) 0, drinkCountInfo.getFridge(), drinkCountInfo.getCount(), drinkCountInfo.getPosition(), LocalDateTime.now());
+
+            log.info("饮品{}补货成功, count: {}, fridge: {}, position: {}", drink.getName(), drinkCountInfo.getCount(), drinkCountInfo.getFridge(), drinkCountInfo.getPosition());
         }
 
         // 4. 更新缓存
         if (drinkOnSales != null) {
-            redisTemplate.opsForValue().set("drinkList", drinkOnSales);
+            redisService.set(RedisConstant.DRINK_LIST, drinkOnSales);
         }
 
         return Result.success();
     }
+
+    @Override
+    public void updateDrinkOnSale() {
+        log.info("更新饮品信息（温度、图片、价格），当前时间：{}", LocalDateTime.now());
+        // 1. 从缓存中获取在售饮品信息
+        ArrayList<DrinkOnSale> drinkOnSales = (ArrayList<DrinkOnSale>) redisService.get(RedisConstant.DRINK_LIST);
+
+        // 2. 更新饮品信息
+        if (drinkOnSales != null) {
+            log.info("更新在售饮品信息，当前剩余情况：{}", drinkOnSales);
+            // 2.1 更新最新的温度
+            BigDecimal temperature = temperatureMapper.getRecentInsideTemperature();
+
+            ArrayList<DrinkOnSale> newDrinkOnSales = new ArrayList<>();
+
+            for (DrinkOnSale drinkOnSale : drinkOnSales) {
+                long minutes = Duration.between(drinkOnSale.getCreateTime(), LocalDateTime.now()).toMinutes();
+                BigDecimal updateTemperature = BigDecimal.valueOf(TemperatureUtil.calCoolingTemperature(drinkOnSale.getCreateTemperature().doubleValue(), temperature.doubleValue(), minutes));
+
+                // 更新饮料基本信息
+                Drink drink = drinkMapper.getDrinkById(drinkOnSale.getDrinkId());
+                drinkOnSale.setImage(drink.getImage());
+                drinkOnSale.setPrice(drink.getPrice());
+
+                // 将温度限定为一位小数
+                updateTemperature = updateTemperature.setScale(1, RoundingMode.HALF_UP);
+                drinkOnSale.setTemperature(updateTemperature);
+                newDrinkOnSales.add(drinkOnSale);
+            }
+
+            // 2.2. 更新缓存
+            redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
+            redisService.set(RedisConstant.DRINK_UPDATE_TIME, LocalDateTime.now());
+        } else {
+            log.error("在售饮品信息为空，读取交易表进行初始化");
+            // 2.3. 读取交易表进行初始化
+            ArrayList<DrinkOnSale> newDrinkOnSales = new ArrayList<>();
+            ArrayList<Transaction> drinkOnSaleList = transactionMapper.getDrinkOnSale();
+            log.info("读取交易表成功，当前剩余情况：{}", drinkOnSaleList);
+
+            // 2.4. 更新饮品信息
+            for (Transaction transaction : drinkOnSaleList) {
+                // 构建新的饮品信息
+                DrinkOnSale drinkOnSale = new DrinkOnSale();
+                // 获取饮品信息
+                Drink drink = drinkMapper.getDrinkById(transaction.getDrinkId());
+
+                drinkOnSale.setDrinkId(drink.getId());
+                drinkOnSale.setName(drink.getName());
+                drinkOnSale.setPrice(drink.getPrice());
+                drinkOnSale.setFridge(transaction.getFridge());
+                drinkOnSale.setPosition(transaction.getPosition());
+                drinkOnSale.setCount(transaction.getCount());
+                drinkOnSale.setImage(drink.getImage());
+                drinkOnSale.setCreateTime(LocalDateTime.now());
+                // 设定温度
+                BigDecimal temperature = temperatureMapper.getRecentOutsideTemperature().setScale(1, RoundingMode.HALF_UP);
+                drinkOnSale.setTemperature(temperature);
+                drinkOnSale.setCreateTemperature(temperature);
+
+                newDrinkOnSales.add(drinkOnSale);
+            }
+
+            // 2.5. 更新缓存
+            redisService.set(RedisConstant.DRINK_LIST, newDrinkOnSales);
+        }
+    }
+
+    @Override
+    public Result getCamerasInfo() {
+        // 1. 获取摄像头信息
+        String recentPhoto = cameraMapper.getRecentPhoto();
+
+        log.info("获取摄像头信息成功");
+
+        return Result.success(recentPhoto);
+    }
+
 }

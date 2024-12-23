@@ -10,7 +10,7 @@ public class TemperatureUtil {
      * @param minutes 入柜时间(分钟)
      * @return 饮料冷却后的温度
      */
-    public static double calCoolingTemperature(double initialTemperature, double fridgeTemperature, Integer minutes) {
+    public static double calCoolingTemperature(double initialTemperature, double fridgeTemperature, long minutes) {
         // 使用指数衰减公式计算冷却后的温度
         return fridgeTemperature + (initialTemperature - fridgeTemperature) * Math.exp(-K * minutes);
     }

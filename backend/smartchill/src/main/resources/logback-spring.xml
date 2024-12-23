@@ -26,10 +26,18 @@
         </encoder>
     </appender>
 
+    <!-- MyBatis 日志配置：设置 MyBatis 日志为 DEBUG 级别 -->
+    <logger name="org.apache.ibatis" level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
     <!-- 根日志配置：输出到控制台和文件 -->
     <root level="info">
         <appender-ref ref="CONSOLE"/>
         <appender-ref ref="FILE"/>
     </root>
+
+
 
 </configuration>

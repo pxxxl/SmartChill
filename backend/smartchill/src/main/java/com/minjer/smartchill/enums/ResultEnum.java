@@ -19,7 +19,13 @@ public enum ResultEnum {
     UPLOAD_FAILED(1004, "文件上传失败"),
     DRINK_NOT_EXIST(1005, "饮品不存在"),
     PRICE_ERROR(1006, "价格不符合要求，请控制在0.1-99.9之间"),
-    DRINK_UNSOLD(1007, "饮品未销售完毕，不允许补货"),;
+    DRINK_UNSOLD(1007, "饮品未销售完毕，不允许补货"),
+    OUT_OF_STOCK(1008, "库存不足"),
+
+    FILE_READ_ERROR(2001, "文件读取失败"),
+    DATE_ERROR(2002, "日期错误"),
+    IO_ERROR(2003, "IO异常"),
+    FILE_EMPTY(2004, "文件为空"),;
 
 
 
