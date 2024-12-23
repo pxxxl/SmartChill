@@ -31,8 +31,14 @@ def detect_yolov8(frame: np.ndarray) -> list:
         for box in boxes:
             x, y, w, h = box.xywh[0]
             left, top = x - w / 2, y - h / 2
+
+            left -= 100
+            top -= 100
+            w += 200
+            h += 200
+
             cls_str = result.names[int(box.cls[0])]  # 获取类别名称
-            if cls_str == "person":
+            if cls_str != "bottle":
                 continue
             conf = box.conf.item()
             detections.append(([left.item(), top.item(), w.item(), h.item()], conf, cls_str))
@@ -87,7 +93,7 @@ def cross_line_detection(
 class TrackMachine:
     def __init__(self, cam_id_list: List[int], w: int, h: int):
         self.tracker_object_dict = {
-            cam_id: DeepSort(max_age=30, n_init=3, nn_budget=100, max_iou_distance=0.9)
+            cam_id: DeepSort(max_age=30, n_init=1, nn_budget=100, max_iou_distance=0.9, max_cosine_distance=1.0)
             for cam_id in cam_id_list
         }
 
@@ -101,9 +107,15 @@ class TrackMachine:
 
     def image_input(self, frame_byte_array: bytes, cam_id: int) -> int:
         frame = byte_array_to_frame(frame_byte_array, self.w, self.h)
+        log("frame converted")
         detections = detect_yolov8(frame)
+        log("detection complete")
         tracker = self.tracker_object_dict[cam_id]
+        log("tracker object obtained")
         track_list = track_deepsort(tracker, detections, frame)
+        log("tracking complete")
         count = cross_line_detection(self.w / 2, track_list, self.tracker_formal_track_list_dict[cam_id])
+        log("cross line detection complete")
         self.tracker_formal_track_list_dict[cam_id] = track_list
+        log("formal track list updated")
         return count

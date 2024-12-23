@@ -27,7 +27,7 @@ def upload_image():
     success = True
     count = 0
     try:
-        cam_id = request.form.get('cam_id')
+        cam_id = request.args.get('cam_id')
         image_file = request.files.get('file')
         frame_byte_array = image_file.read()
 

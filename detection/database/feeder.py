@@ -9,29 +9,27 @@ args = parser.parse_args()
 
 image_directory = args.image_dir
 
-# API地址
-url = "http://127.0.0.1:5987/img"  # 替换为实际API地址
-
 # 摄像头ID
-cam_id = 0
+cam_id = "3"
+
+# API地址
+url = f"http://192.168.5.2:5987/img?cam_id={cam_id}"  # 替换为实际API地址
+
+
 
 # 按名字顺序遍历图片
 for image_name in sorted(os.listdir(image_directory)):
     # 检查是否为PNG文件
-    if image_name.lower().endswith('.png'):
+    if image_name.lower().endswith('.jpg'):
         image_path = os.path.join(image_directory, image_name)
         
         # 读取并发送图片
         with open(image_path, 'rb') as img:
             files = {
-                'file': (image_name, img, 'image/png'),
+                'file': (image_name, img, 'image/jpg'),
             }
-            data = {
-                'cam_id': cam_id,
-            }
-            
             # 发送POST请求
-            response = requests.post(url, files=files, data=data)
+            response = requests.post(url, files=files)
             
             # 处理响应
             if response.status_code == 200:

@@ -234,3 +234,873 @@
 2024-09-27 12:34:26,983 - INFO - Cross line detection: 0
 2024-09-27 12:34:26,984 - INFO - Image uploaded, 0 changes detected
 2024-09-27 12:34:26,984 - INFO - 172.17.0.1 - - [27/Sep/2024 12:34:26] "POST /img HTTP/1.1" 200 -
+2024-12-09 11:44:37,358 - INFO - Logger output file: /app/src/detection.log
+2024-12-09 11:44:37,955 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:44:37,956 - INFO - - gpu enabled: False
+2024-12-09 11:44:37,956 - INFO - - half precision: False
+2024-12-09 11:44:37,957 - INFO - - max batch size: 16
+2024-12-09 11:44:37,957 - INFO - - expects BGR: True
+2024-12-09 11:44:38,086 - INFO - DeepSort Tracker initialised
+2024-12-09 11:44:38,086 - INFO - - max age: 30
+2024-12-09 11:44:38,087 - INFO - - appearance threshold: 0.2
+2024-12-09 11:44:38,087 - INFO - - nms threshold: OFF
+2024-12-09 11:44:38,088 - INFO - - max num of appearance features: 100
+2024-12-09 11:44:38,088 - INFO - - overriding track class : No
+2024-12-09 11:44:38,088 - INFO - - today given : No
+2024-12-09 11:44:38,089 - INFO - - in-build embedder : Yes
+2024-12-09 11:44:38,089 - INFO - - polygon detections : No
+2024-12-09 11:44:38,118 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:44:38,118 - INFO - - gpu enabled: False
+2024-12-09 11:44:38,119 - INFO - - half precision: False
+2024-12-09 11:44:38,119 - INFO - - max batch size: 16
+2024-12-09 11:44:38,119 - INFO - - expects BGR: True
+2024-12-09 11:44:38,203 - INFO - DeepSort Tracker initialised
+2024-12-09 11:44:38,204 - INFO - - max age: 30
+2024-12-09 11:44:38,205 - INFO - - appearance threshold: 0.2
+2024-12-09 11:44:38,205 - INFO - - nms threshold: OFF
+2024-12-09 11:44:38,206 - INFO - - max num of appearance features: 100
+2024-12-09 11:44:38,207 - INFO - - overriding track class : No
+2024-12-09 11:44:38,208 - INFO - - today given : No
+2024-12-09 11:44:38,208 - INFO - - in-build embedder : Yes
+2024-12-09 11:44:38,209 - INFO - - polygon detections : No
+2024-12-09 11:44:38,209 - INFO - Track machine initialized, cam_id: ['0', '1'], width: 640, height: 480
+2024-12-09 11:44:38,220 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5987
+ * Running on http://172.17.0.2:5987
+2024-12-09 11:44:38,221 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-09 11:52:22,784 - INFO - Logger output file: /app/src/detection.log
+2024-12-09 11:52:23,210 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:52:23,210 - INFO - - gpu enabled: False
+2024-12-09 11:52:23,211 - INFO - - half precision: False
+2024-12-09 11:52:23,212 - INFO - - max batch size: 16
+2024-12-09 11:52:23,213 - INFO - - expects BGR: True
+2024-12-09 11:52:23,316 - INFO - DeepSort Tracker initialised
+2024-12-09 11:52:23,316 - INFO - - max age: 30
+2024-12-09 11:52:23,317 - INFO - - appearance threshold: 0.2
+2024-12-09 11:52:23,317 - INFO - - nms threshold: OFF
+2024-12-09 11:52:23,318 - INFO - - max num of appearance features: 100
+2024-12-09 11:52:23,318 - INFO - - overriding track class : No
+2024-12-09 11:52:23,323 - INFO - - today given : No
+2024-12-09 11:52:23,323 - INFO - - in-build embedder : Yes
+2024-12-09 11:52:23,323 - INFO - - polygon detections : No
+2024-12-09 11:52:23,354 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:52:23,356 - INFO - - gpu enabled: False
+2024-12-09 11:52:23,356 - INFO - - half precision: False
+2024-12-09 11:52:23,357 - INFO - - max batch size: 16
+2024-12-09 11:52:23,358 - INFO - - expects BGR: True
+2024-12-09 11:52:23,445 - INFO - DeepSort Tracker initialised
+2024-12-09 11:52:23,446 - INFO - - max age: 30
+2024-12-09 11:52:23,446 - INFO - - appearance threshold: 0.2
+2024-12-09 11:52:23,447 - INFO - - nms threshold: OFF
+2024-12-09 11:52:23,447 - INFO - - max num of appearance features: 100
+2024-12-09 11:52:23,447 - INFO - - overriding track class : No
+2024-12-09 11:52:23,448 - INFO - - today given : No
+2024-12-09 11:52:23,448 - INFO - - in-build embedder : Yes
+2024-12-09 11:52:23,448 - INFO - - polygon detections : No
+2024-12-09 11:52:23,449 - INFO - Track machine initialized, cam_id: ['0', '1'], width: 640, height: 480
+2024-12-09 11:54:57,012 - INFO - Logger output file: /app/src/detection.log
+2024-12-09 11:54:57,415 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:54:57,416 - INFO - - gpu enabled: False
+2024-12-09 11:54:57,419 - INFO - - half precision: False
+2024-12-09 11:54:57,419 - INFO - - max batch size: 16
+2024-12-09 11:54:57,420 - INFO - - expects BGR: True
+2024-12-09 11:54:57,523 - INFO - DeepSort Tracker initialised
+2024-12-09 11:54:57,524 - INFO - - max age: 30
+2024-12-09 11:54:57,524 - INFO - - appearance threshold: 0.2
+2024-12-09 11:54:57,525 - INFO - - nms threshold: OFF
+2024-12-09 11:54:57,525 - INFO - - max num of appearance features: 100
+2024-12-09 11:54:57,526 - INFO - - overriding track class : No
+2024-12-09 11:54:57,526 - INFO - - today given : No
+2024-12-09 11:54:57,526 - INFO - - in-build embedder : Yes
+2024-12-09 11:54:57,527 - INFO - - polygon detections : No
+2024-12-09 11:54:57,556 - INFO - MobileNetV2 Embedder for Deep Sort initialised
+2024-12-09 11:54:57,557 - INFO - - gpu enabled: False
+2024-12-09 11:54:57,557 - INFO - - half precision: False
+2024-12-09 11:54:57,557 - INFO - - max batch size: 16
+2024-12-09 11:54:57,558 - INFO - - expects BGR: True
+2024-12-09 11:54:57,639 - INFO - DeepSort Tracker initialised
+2024-12-09 11:54:57,640 - INFO - - max age: 30
+2024-12-09 11:54:57,641 - INFO - - appearance threshold: 0.2
+2024-12-09 11:54:57,641 - INFO - - nms threshold: OFF
+2024-12-09 11:54:57,642 - INFO - - max num of appearance features: 100
+2024-12-09 11:54:57,642 - INFO - - overriding track class : No
+2024-12-09 11:54:57,646 - INFO - - today given : No
+2024-12-09 11:54:57,647 - INFO - - in-build embedder : Yes
+2024-12-09 11:54:57,647 - INFO - - polygon detections : No
+2024-12-09 11:54:57,648 - INFO - Track machine initialized, cam_id: ['0', '1'], width: 640, height: 480
+2024-12-09 11:54:57,650 - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5987
+ * Running on http://172.17.0.2:5987
+2024-12-09 11:54:57,651 - INFO - [33mPress CTRL+C to quit[0m
+2024-12-09 12:00:29,516 - INFO - Image upload request received
+2024-12-09 12:00:29,529 - INFO - Converting byte array to frame
+2024-12-09 12:00:29,570 - INFO - Byte array converted to frame
+2024-12-09 12:00:29,571 - INFO - Detecting objects
+2024-12-09 12:00:40,716 - INFO - Detection complete
+2024-12-09 12:00:40,731 - INFO - Error: None
+2024-12-09 12:00:40,734 - INFO - 172.17.0.1 - - [09/Dec/2024 12:00:40] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:01:50,874 - INFO - Image upload request received
+2024-12-09 12:01:50,907 - INFO - Converting byte array to frame
+2024-12-09 12:01:50,920 - INFO - Byte array converted to frame
+2024-12-09 12:01:50,928 - INFO - Detecting objects
+2024-12-09 12:01:55,126 - INFO - Detection complete
+2024-12-09 12:01:55,129 - INFO - Detected mouse with confidence 0.9541429281234741
+2024-12-09 12:01:55,130 - INFO - Bounding box: 181.7940673828125 240.75018310546875 176.19287109375 51.9755859375
+2024-12-09 12:01:55,131 - INFO - Detected laptop with confidence 0.8649319410324097
+2024-12-09 12:01:55,131 - INFO - Bounding box: 0.27178955078125 272.2425842285156 405.0682373046875 204.735107421875
+2024-12-09 12:01:55,133 - INFO - Error: None
+2024-12-09 12:01:55,134 - INFO - 172.17.0.1 - - [09/Dec/2024 12:01:55] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:05:39,700 - INFO - Image upload request received
+2024-12-09 12:05:39,709 - INFO - Converting byte array to frame
+2024-12-09 12:05:39,718 - INFO - Byte array converted to frame
+2024-12-09 12:05:39,718 - INFO - Detecting objects
+2024-12-09 12:05:44,337 - INFO - Detection complete
+2024-12-09 12:05:44,340 - INFO - Detected mouse with confidence 0.9541429281234741
+2024-12-09 12:05:44,341 - INFO - Bounding box: 181.7940673828125 240.75018310546875 176.19287109375 51.9755859375
+2024-12-09 12:05:44,344 - INFO - Detected laptop with confidence 0.8649319410324097
+2024-12-09 12:05:44,346 - INFO - Bounding box: 0.27178955078125 272.2425842285156 405.0682373046875 204.735107421875
+2024-12-09 12:05:44,350 - INFO - Error: None
+2024-12-09 12:05:44,352 - INFO - 172.17.0.1 - - [09/Dec/2024 12:05:44] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:06:46,249 - INFO - Image upload request received
+2024-12-09 12:06:46,254 - INFO - Converting byte array to frame
+2024-12-09 12:06:46,264 - INFO - Byte array converted to frame
+2024-12-09 12:06:46,265 - INFO - Detecting objects
+2024-12-09 12:06:50,900 - INFO - Detection complete
+2024-12-09 12:06:50,903 - INFO - Detected cup with confidence 0.895628809928894
+2024-12-09 12:06:50,903 - INFO - Bounding box: 192.62042236328125 88.6787109375 236.4798583984375 218.23483276367188
+2024-12-09 12:06:50,906 - INFO - Begin tracking objects
+2024-12-09 12:06:51,103 - INFO - Tracking object 1 at 192.62042236328125 88.6787109375 429.10028076171875 306.9135437011719
+2024-12-09 12:06:51,103 - INFO - Cross line detection: 0
+2024-12-09 12:06:51,104 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:06:51,104 - INFO - 172.17.0.1 - - [09/Dec/2024 12:06:51] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:06:51,117 - INFO - Image upload request received
+2024-12-09 12:06:51,127 - INFO - Converting byte array to frame
+2024-12-09 12:06:51,139 - INFO - Byte array converted to frame
+2024-12-09 12:06:51,140 - INFO - Detecting objects
+2024-12-09 12:06:55,681 - INFO - Detection complete
+2024-12-09 12:06:55,681 - INFO - Detected cup with confidence 0.8996317386627197
+2024-12-09 12:06:55,682 - INFO - Bounding box: 193.57666015625 88.1793212890625 235.83238220214844 219.25509643554688
+2024-12-09 12:06:55,683 - INFO - Begin tracking objects
+2024-12-09 12:06:55,781 - INFO - Tracking object 1 at 192.70678880254366 88.2453562838972 430.11165430663766 307.36554182068375
+2024-12-09 12:06:55,782 - INFO - Cross line detection: 0
+2024-12-09 12:06:55,782 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:06:55,783 - INFO - 172.17.0.1 - - [09/Dec/2024 12:06:55] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:06:55,795 - INFO - Image upload request received
+2024-12-09 12:06:55,798 - INFO - Converting byte array to frame
+2024-12-09 12:06:55,807 - INFO - Byte array converted to frame
+2024-12-09 12:06:55,808 - INFO - Detecting objects
+2024-12-09 12:07:00,120 - INFO - Detection complete
+2024-12-09 12:07:00,121 - INFO - Detected cup with confidence 0.9275994300842285
+2024-12-09 12:07:00,121 - INFO - Bounding box: 194.37353515625 88.63714599609375 235.81813049316406 219.00967407226562
+2024-12-09 12:07:00,122 - INFO - Begin tracking objects
+2024-12-09 12:07:00,200 - INFO - Tracking object 1 at 193.45781459759183 88.52737422050295 430.7779519205972 307.6083067214553
+2024-12-09 12:07:00,200 - INFO - Cross line detection: 0
+2024-12-09 12:07:00,201 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:00,201 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:00] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:00,218 - INFO - Image upload request received
+2024-12-09 12:07:00,221 - INFO - Converting byte array to frame
+2024-12-09 12:07:00,230 - INFO - Byte array converted to frame
+2024-12-09 12:07:00,231 - INFO - Detecting objects
+2024-12-09 12:07:04,749 - INFO - Detection complete
+2024-12-09 12:07:04,750 - INFO - Detected cup with confidence 0.9457319974899292
+2024-12-09 12:07:04,750 - INFO - Bounding box: 193.78240966796875 90.66128540039062 233.38255310058594 218.03878784179688
+2024-12-09 12:07:04,752 - INFO - Begin tracking objects
+2024-12-09 12:07:04,871 - INFO - Tracking object 1 at 192.7603629232168 90.16833741291669 429.1421072984268 308.47985729052726
+2024-12-09 12:07:04,872 - INFO - Cross line detection: 0
+2024-12-09 12:07:04,872 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:04,873 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:04] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:04,886 - INFO - Image upload request received
+2024-12-09 12:07:04,889 - INFO - Converting byte array to frame
+2024-12-09 12:07:04,897 - INFO - Byte array converted to frame
+2024-12-09 12:07:04,898 - INFO - Detecting objects
+2024-12-09 12:07:09,526 - INFO - Detection complete
+2024-12-09 12:07:09,527 - INFO - Detected cup with confidence 0.9140079021453857
+2024-12-09 12:07:09,528 - INFO - Bounding box: 173.323486328125 91.19927978515625 236.63153076171875 217.04052734375
+2024-12-09 12:07:09,531 - INFO - Begin tracking objects
+2024-12-09 12:07:09,709 - INFO - Tracking object 1 at 178.95127980269473 91.08822377624608 414.33431342012113 308.40945506011616
+2024-12-09 12:07:09,710 - INFO - Cross line detection: 0
+2024-12-09 12:07:09,710 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:09,711 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:09] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:09,724 - INFO - Image upload request received
+2024-12-09 12:07:09,726 - INFO - Converting byte array to frame
+2024-12-09 12:07:09,736 - INFO - Byte array converted to frame
+2024-12-09 12:07:09,737 - INFO - Detecting objects
+2024-12-09 12:07:14,031 - INFO - Detection complete
+2024-12-09 12:07:14,032 - INFO - Detected cup with confidence 0.4920145571231842
+2024-12-09 12:07:14,032 - INFO - Bounding box: 157.0301513671875 79.977783203125 216.49822998046875 218.7862548828125
+2024-12-09 12:07:14,034 - INFO - Begin tracking objects
+2024-12-09 12:07:14,137 - INFO - Tracking object 1 at 155.30615291792233 83.30773096136723 390.6328344405325 301.56283074118784
+2024-12-09 12:07:14,138 - INFO - Cross line detection: 0
+2024-12-09 12:07:14,138 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:14,139 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:14] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:14,153 - INFO - Image upload request received
+2024-12-09 12:07:14,155 - INFO - Converting byte array to frame
+2024-12-09 12:07:14,169 - INFO - Byte array converted to frame
+2024-12-09 12:07:14,170 - INFO - Detecting objects
+2024-12-09 12:07:18,484 - INFO - Detection complete
+2024-12-09 12:07:18,485 - INFO - Detected cup with confidence 0.8151651620864868
+2024-12-09 12:07:18,486 - INFO - Bounding box: 142.73968505859375 39.898712158203125 242.8470458984375 233.440185546875
+2024-12-09 12:07:18,487 - INFO - Begin tracking objects
+2024-12-09 12:07:18,570 - INFO - Tracking object 1 at 141.1021233346728 52.55378083231196 387.3426725633241 281.4029686307566
+2024-12-09 12:07:18,570 - INFO - Cross line detection: 0
+2024-12-09 12:07:18,571 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:18,571 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:18] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:18,590 - INFO - Image upload request received
+2024-12-09 12:07:18,593 - INFO - Converting byte array to frame
+2024-12-09 12:07:18,603 - INFO - Byte array converted to frame
+2024-12-09 12:07:18,605 - INFO - Detecting objects
+2024-12-09 12:07:23,070 - INFO - Detection complete
+2024-12-09 12:07:23,071 - INFO - Detected cup with confidence 0.9118101000785828
+2024-12-09 12:07:23,071 - INFO - Bounding box: 197.51611328125 26.09881591796875 251.181640625 240.0159912109375
+2024-12-09 12:07:23,074 - INFO - Begin tracking objects
+2024-12-09 12:07:23,221 - INFO - Tracking object 1 at 173.83541409581147 32.418368313099336 428.42913716004483 269.4477983634153
+2024-12-09 12:07:23,221 - INFO - Cross line detection: 0
+2024-12-09 12:07:23,222 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:23,222 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:23] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:23,243 - INFO - Image upload request received
+2024-12-09 12:07:23,248 - INFO - Converting byte array to frame
+2024-12-09 12:07:23,264 - INFO - Byte array converted to frame
+2024-12-09 12:07:23,265 - INFO - Detecting objects
+2024-12-09 12:07:27,858 - INFO - Detection complete
+2024-12-09 12:07:27,859 - INFO - Detected cup with confidence 0.8382206559181213
+2024-12-09 12:07:27,860 - INFO - Bounding box: 308.44317626953125 64.0306396484375 243.8653564453125 230.19610595703125
+2024-12-09 12:07:27,862 - INFO - Begin tracking objects
+2024-12-09 12:07:27,960 - INFO - Tracking object 1 at 261.4618354359176 50.36854626849964 512.0185376637974 283.8605977211266
+2024-12-09 12:07:27,961 - INFO - Cross line detection: 1
+2024-12-09 12:07:27,961 - INFO - Image uploaded, 1 changes detected
+2024-12-09 12:07:27,962 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:27] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:27,974 - INFO - Image upload request received
+2024-12-09 12:07:27,977 - INFO - Converting byte array to frame
+2024-12-09 12:07:27,987 - INFO - Byte array converted to frame
+2024-12-09 12:07:27,988 - INFO - Detecting objects
+2024-12-09 12:07:32,298 - INFO - Detection complete
+2024-12-09 12:07:32,301 - INFO - Detected cup with confidence 0.41634291410446167
+2024-12-09 12:07:32,303 - INFO - Bounding box: 321.27642822265625 126.15286254882812 235.0765380859375 216.79635620117188
+2024-12-09 12:07:32,305 - INFO - Detected bowl with confidence 0.33385932445526123
+2024-12-09 12:07:32,306 - INFO - Bounding box: 319.47918701171875 126.4722900390625 236.88525390625 215.85693359375
+2024-12-09 12:07:32,310 - INFO - Begin tracking objects
+2024-12-09 12:07:32,529 - INFO - Tracking object 1 at 305.37050919765545 99.7691209191461 544.3367287836263 322.09054338895737
+2024-12-09 12:07:32,530 - INFO - Tracking object 2 at 321.27642822265625 126.15286254882812 556.3529663085938 342.94921875
+2024-12-09 12:07:32,530 - INFO - Cross line detection: 0
+2024-12-09 12:07:32,531 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:32,531 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:32] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:32,546 - INFO - Image upload request received
+2024-12-09 12:07:32,548 - INFO - Converting byte array to frame
+2024-12-09 12:07:32,558 - INFO - Byte array converted to frame
+2024-12-09 12:07:32,559 - INFO - Detecting objects
+2024-12-09 12:07:37,231 - INFO - Detection complete
+2024-12-09 12:07:37,233 - INFO - Detected cup with confidence 0.8699348568916321
+2024-12-09 12:07:37,234 - INFO - Bounding box: 231.014892578125 136.80227661132812 239.71044921875 210.66925048828125
+2024-12-09 12:07:37,236 - INFO - Begin tracking objects
+2024-12-09 12:07:37,384 - INFO - Tracking object 1 at 320.1663010469836 101.83887748123541 559.4415881524492 324.4478445525849
+2024-12-09 12:07:37,384 - INFO - Tracking object 2 at 247.7325087226924 135.39408962785706 477.2657964167704 346.87353591288417
+2024-12-09 12:07:37,384 - INFO - Cross line detection: 0
+2024-12-09 12:07:37,385 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:37,386 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:37] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:37,403 - INFO - Image upload request received
+2024-12-09 12:07:37,405 - INFO - Converting byte array to frame
+2024-12-09 12:07:37,414 - INFO - Byte array converted to frame
+2024-12-09 12:07:37,414 - INFO - Detecting objects
+2024-12-09 12:07:42,010 - INFO - Detection complete
+2024-12-09 12:07:42,010 - INFO - Detected cup with confidence 0.4988971948623657
+2024-12-09 12:07:42,011 - INFO - Bounding box: 148.921875 115.8309326171875 211.38580322265625 210.65185546875
+2024-12-09 12:07:42,012 - INFO - Begin tracking objects
+2024-12-09 12:07:42,083 - INFO - Tracking object 1 at 334.9620929027948 103.90863404332472 574.5464475147891 326.80514571621234
+2024-12-09 12:07:42,084 - INFO - Tracking object 2 at 159.64443358816237 120.45191528645663 387.68265405362547 331.0106990153422
+2024-12-09 12:07:42,084 - INFO - Cross line detection: -1
+2024-12-09 12:07:42,084 - INFO - Image uploaded, -1 changes detected
+2024-12-09 12:07:42,086 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:42] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:42,099 - INFO - Image upload request received
+2024-12-09 12:07:42,107 - INFO - Converting byte array to frame
+2024-12-09 12:07:42,115 - INFO - Byte array converted to frame
+2024-12-09 12:07:42,115 - INFO - Detecting objects
+2024-12-09 12:07:46,143 - INFO - Detection complete
+2024-12-09 12:07:46,144 - INFO - Detected cup with confidence 0.5228201150894165
+2024-12-09 12:07:46,144 - INFO - Bounding box: 104.21054077148438 95.28890991210938 225.89141845703125 214.0059814453125
+2024-12-09 12:07:46,146 - INFO - Begin tracking objects
+2024-12-09 12:07:46,217 - INFO - Tracking object 1 at 349.7578847650889 105.97839060541403 589.651306870646 329.1624468798399
+2024-12-09 12:07:46,217 - INFO - Tracking object 2 at 103.97435114749624 99.96704932060932 334.38055522455835 312.9138811589409
+2024-12-09 12:07:46,217 - INFO - Cross line detection: 0
+2024-12-09 12:07:46,218 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:46,218 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:46] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:46,230 - INFO - Image upload request received
+2024-12-09 12:07:46,233 - INFO - Converting byte array to frame
+2024-12-09 12:07:46,245 - INFO - Byte array converted to frame
+2024-12-09 12:07:46,246 - INFO - Detecting objects
+2024-12-09 12:07:50,749 - INFO - Detection complete
+2024-12-09 12:07:50,750 - INFO - Detected cup with confidence 0.60555100440979
+2024-12-09 12:07:50,750 - INFO - Bounding box: 165.17047119140625 70.67996215820312 207.27149963378906 223.71737670898438
+2024-12-09 12:07:50,752 - INFO - Begin tracking objects
+2024-12-09 12:07:50,846 - INFO - Tracking object 1 at 364.55367663386596 108.04814716750334 604.7561662200198 331.5197480434673
+2024-12-09 12:07:50,847 - INFO - Tracking object 2 at 123.73117502989503 75.64189886568293 361.19888342764955 296.5493233391317
+2024-12-09 12:07:50,847 - INFO - Cross line detection: 0
+2024-12-09 12:07:50,847 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:50,848 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:50] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:50,866 - INFO - Image upload request received
+2024-12-09 12:07:50,869 - INFO - Converting byte array to frame
+2024-12-09 12:07:50,878 - INFO - Byte array converted to frame
+2024-12-09 12:07:50,878 - INFO - Detecting objects
+2024-12-09 12:07:55,527 - INFO - Detection complete
+2024-12-09 12:07:55,528 - INFO - Detected cup with confidence 0.8727153539657593
+2024-12-09 12:07:55,528 - INFO - Bounding box: 223.85507202148438 66.05169677734375 225.817626953125 229.1614990234375
+2024-12-09 12:07:55,529 - INFO - Begin tracking objects
+2024-12-09 12:07:55,636 - INFO - Tracking object 1 at 379.34946850912604 110.11790372959265 619.8610255629108 333.87704920709484
+2024-12-09 12:07:55,637 - INFO - Tracking object 2 at 178.304750141096 64.62968572070073 421.6886913306587 292.0313821410067
+2024-12-09 12:07:55,637 - INFO - Cross line detection: 0
+2024-12-09 12:07:55,638 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:07:55,638 - INFO - 172.17.0.1 - - [09/Dec/2024 12:07:55] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:07:55,656 - INFO - Image upload request received
+2024-12-09 12:07:55,658 - INFO - Converting byte array to frame
+2024-12-09 12:07:55,666 - INFO - Byte array converted to frame
+2024-12-09 12:07:55,667 - INFO - Detecting objects
+2024-12-09 12:08:00,237 - INFO - Detection complete
+2024-12-09 12:08:00,239 - INFO - Detected cup with confidence 0.903395414352417
+2024-12-09 12:08:00,239 - INFO - Bounding box: 276.2305908203125 85.59158325195312 238.09722900390625 223.5189208984375
+2024-12-09 12:08:00,242 - INFO - Begin tracking objects
+2024-12-09 12:08:00,378 - INFO - Tracking object 1 at 282.5382859031196 87.21402566466745 522.5725744797678 310.76514210462994
+2024-12-09 12:08:00,379 - INFO - Tracking object 2 at 166.5017811586225 51.00333253002799 413.3739315880422 281.6641850829606
+2024-12-09 12:08:00,379 - INFO - Cross line detection: 0
+2024-12-09 12:08:00,379 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:08:00,380 - INFO - 172.17.0.1 - - [09/Dec/2024 12:08:00] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:09:12,930 - INFO - Image upload request received
+2024-12-09 12:09:12,933 - INFO - Converting byte array to frame
+2024-12-09 12:09:12,939 - INFO - Byte array converted to frame
+2024-12-09 12:09:12,939 - INFO - Detecting objects
+2024-12-09 12:09:17,475 - INFO - Detection complete
+2024-12-09 12:09:17,476 - INFO - Detected mouse with confidence 0.9541429281234741
+2024-12-09 12:09:17,476 - INFO - Bounding box: 181.7940673828125 240.75018310546875 176.19287109375 51.9755859375
+2024-12-09 12:09:17,477 - INFO - Detected laptop with confidence 0.8649319410324097
+2024-12-09 12:09:17,477 - INFO - Bounding box: 0.27178955078125 272.2425842285156 405.0682373046875 204.735107421875
+2024-12-09 12:09:17,478 - INFO - Begin tracking objects
+2024-12-09 12:09:17,649 - INFO - Tracking object 1 at 286.87630067650946 86.94633252350249 527.1695242191158 310.738609509462
+2024-12-09 12:09:17,650 - INFO - Tracking object 2 at 154.69881227344632 37.376979339355245 405.0591717481283 271.2969880249145
+2024-12-09 12:09:17,650 - INFO - Tracking object 3 at 0.27178955078125 272.2425842285156 405.34002685546875 476.9776916503906
+2024-12-09 12:09:17,650 - INFO - Tracking object 4 at 181.7940673828125 240.75018310546875 357.9869384765625 292.72576904296875
+2024-12-09 12:09:17,651 - INFO - Cross line detection: 0
+2024-12-09 12:09:17,651 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:09:17,652 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:17] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:09:17,664 - INFO - Image upload request received
+2024-12-09 12:09:17,665 - INFO - Converting byte array to frame
+2024-12-09 12:09:17,671 - INFO - Byte array converted to frame
+2024-12-09 12:09:17,671 - INFO - Detecting objects
+2024-12-09 12:09:21,995 - INFO - Detection complete
+2024-12-09 12:09:21,998 - INFO - Detected mouse with confidence 0.9554787874221802
+2024-12-09 12:09:22,000 - INFO - Bounding box: 181.9603271484375 240.82843017578125 176.20997619628906 51.6968994140625
+2024-12-09 12:09:22,000 - INFO - Detected laptop with confidence 0.8537251949310303
+2024-12-09 12:09:22,001 - INFO - Bounding box: 0.3533935546875 272.68756103515625 404.9561767578125 203.5830078125
+2024-12-09 12:09:22,001 - INFO - Detected laptop with confidence 0.25002387166023254
+2024-12-09 12:09:22,002 - INFO - Bounding box: 165.42745971679688 207.00961303710938 136.7408447265625 66.12521362304688
+2024-12-09 12:09:22,003 - INFO - Begin tracking objects
+2024-12-09 12:09:22,207 - INFO - Tracking object 1 at 291.21431545760896 86.67863938233754 531.7664739507542 310.71207691429413
+2024-12-09 12:09:22,207 - INFO - Tracking object 2 at 142.89584348556753 23.7506261486825 396.7444118109171 260.9297909668684
+2024-12-09 12:09:22,208 - INFO - Tracking object 3 at 1.2617232830111504 272.62872112684016 404.3944772835565 476.36407268934016
+2024-12-09 12:09:22,208 - INFO - Tracking object 4 at 182.34622363678315 240.8180834557399 357.73816225874884 292.5518339803396
+2024-12-09 12:09:22,209 - INFO - Tracking object 5 at 165.42745971679688 207.00961303710938 302.1683044433594 273.13482666015625
+2024-12-09 12:09:22,209 - INFO - Cross line detection: 0
+2024-12-09 12:09:22,210 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:09:22,210 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:22] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:09:33,646 - INFO - Image upload request received
+2024-12-09 12:09:33,657 - INFO - Converting byte array to frame
+2024-12-09 12:09:33,663 - INFO - Byte array converted to frame
+2024-12-09 12:09:33,663 - INFO - Detecting objects
+2024-12-09 12:09:38,201 - INFO - Detection complete
+2024-12-09 12:09:38,201 - INFO - Detected mouse with confidence 0.9541429281234741
+2024-12-09 12:09:38,202 - INFO - Bounding box: 181.7940673828125 240.75018310546875 176.19287109375 51.9755859375
+2024-12-09 12:09:38,203 - INFO - Detected laptop with confidence 0.8649319410324097
+2024-12-09 12:09:38,203 - INFO - Bounding box: 0.27178955078125 272.2425842285156 405.0682373046875 204.735107421875
+2024-12-09 12:09:38,205 - INFO - Error: None
+2024-12-09 12:09:38,206 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:38] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:38,229 - INFO - Image upload request received
+2024-12-09 12:09:38,236 - INFO - Converting byte array to frame
+2024-12-09 12:09:38,242 - INFO - Byte array converted to frame
+2024-12-09 12:09:38,243 - INFO - Detecting objects
+2024-12-09 12:09:42,279 - INFO - Detection complete
+2024-12-09 12:09:42,280 - INFO - Detected mouse with confidence 0.9554787874221802
+2024-12-09 12:09:42,280 - INFO - Bounding box: 181.9603271484375 240.82843017578125 176.20997619628906 51.6968994140625
+2024-12-09 12:09:42,281 - INFO - Detected laptop with confidence 0.8537251949310303
+2024-12-09 12:09:42,281 - INFO - Bounding box: 0.3533935546875 272.68756103515625 404.9561767578125 203.5830078125
+2024-12-09 12:09:42,281 - INFO - Detected laptop with confidence 0.25002387166023254
+2024-12-09 12:09:42,282 - INFO - Bounding box: 165.42745971679688 207.00961303710938 136.7408447265625 66.12521362304688
+2024-12-09 12:09:42,283 - INFO - Error: None
+2024-12-09 12:09:42,283 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:42] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:42,307 - INFO - Image upload request received
+2024-12-09 12:09:42,315 - INFO - Converting byte array to frame
+2024-12-09 12:09:42,321 - INFO - Byte array converted to frame
+2024-12-09 12:09:42,321 - INFO - Detecting objects
+2024-12-09 12:09:46,447 - INFO - Detection complete
+2024-12-09 12:09:46,447 - INFO - Detected mouse with confidence 0.95719313621521
+2024-12-09 12:09:46,448 - INFO - Bounding box: 181.5965576171875 240.85049438476562 176.45452880859375 51.9813232421875
+2024-12-09 12:09:46,449 - INFO - Detected laptop with confidence 0.8169969916343689
+2024-12-09 12:09:46,449 - INFO - Bounding box: 0.38653564453125 272.3431396484375 405.0657958984375 203.26702880859375
+2024-12-09 12:09:46,450 - INFO - Detected cell phone with confidence 0.4352988302707672
+2024-12-09 12:09:46,450 - INFO - Bounding box: 551.3427734375 0.313323974609375 88.4368896484375 192.67019653320312
+2024-12-09 12:09:46,451 - INFO - Error: None
+2024-12-09 12:09:46,452 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:46] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:46,475 - INFO - Image upload request received
+2024-12-09 12:09:46,484 - INFO - Converting byte array to frame
+2024-12-09 12:09:46,490 - INFO - Byte array converted to frame
+2024-12-09 12:09:46,490 - INFO - Detecting objects
+2024-12-09 12:09:50,603 - INFO - Detection complete
+2024-12-09 12:09:50,604 - INFO - Detected mouse with confidence 0.9565309286117554
+2024-12-09 12:09:50,605 - INFO - Bounding box: 181.63143920898438 240.8480224609375 176.36883544921875 51.77923583984375
+2024-12-09 12:09:50,608 - INFO - Detected laptop with confidence 0.8316049575805664
+2024-12-09 12:09:50,609 - INFO - Bounding box: 0.2994384765625 273.0301513671875 405.1284484863281 200.71929931640625
+2024-12-09 12:09:50,611 - INFO - Detected bottle with confidence 0.6445242762565613
+2024-12-09 12:09:50,612 - INFO - Bounding box: 430.69073486328125 0.314300537109375 101.71209716796875 276.1512451171875
+2024-12-09 12:09:50,615 - INFO - Error: None
+2024-12-09 12:09:50,617 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:50] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:50,634 - INFO - Image upload request received
+2024-12-09 12:09:50,641 - INFO - Converting byte array to frame
+2024-12-09 12:09:50,647 - INFO - Byte array converted to frame
+2024-12-09 12:09:50,648 - INFO - Detecting objects
+2024-12-09 12:09:53,952 - INFO - Image upload request received
+2024-12-09 12:09:53,956 - INFO - Converting byte array to frame
+2024-12-09 12:09:53,963 - INFO - Byte array converted to frame
+2024-12-09 12:09:53,963 - INFO - Detecting objects
+2024-12-09 12:09:55,013 - INFO - Detection complete
+2024-12-09 12:09:55,014 - INFO - Detected mouse with confidence 0.9558736085891724
+2024-12-09 12:09:55,014 - INFO - Bounding box: 181.39794921875 240.777099609375 176.90565490722656 52.00453186035156
+2024-12-09 12:09:55,014 - INFO - Detected laptop with confidence 0.7654589414596558
+2024-12-09 12:09:55,015 - INFO - Bounding box: 0.2572021484375 272.5647888183594 405.80078125 201.71759033203125
+2024-12-09 12:09:55,016 - INFO - Detected bottle with confidence 0.5849528908729553
+2024-12-09 12:09:55,016 - INFO - Bounding box: 354.4029541015625 0.32672119140625 98.6348876953125 280.88275146484375
+2024-12-09 12:09:55,018 - INFO - Error: None
+2024-12-09 12:09:55,018 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:55] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:55,038 - INFO - Image upload request received
+2024-12-09 12:09:55,059 - INFO - Converting byte array to frame
+2024-12-09 12:09:55,066 - INFO - Byte array converted to frame
+2024-12-09 12:09:55,066 - INFO - Detecting objects
+2024-12-09 12:09:58,548 - INFO - Detection complete
+2024-12-09 12:09:58,549 - INFO - Detected mouse with confidence 0.9544476270675659
+2024-12-09 12:09:58,549 - INFO - Bounding box: 181.57363891601562 240.86279296875 176.6732177734375 51.91552734375
+2024-12-09 12:09:58,550 - INFO - Detected laptop with confidence 0.7755016684532166
+2024-12-09 12:09:58,550 - INFO - Bounding box: 0.33062744140625 272.4014892578125 405.04534912109375 203.75384521484375
+2024-12-09 12:09:58,551 - INFO - Detected cell phone with confidence 0.406316876411438
+2024-12-09 12:09:58,552 - INFO - Bounding box: 451.4683837890625 0.538055419921875 100.3848876953125 161.2696533203125
+2024-12-09 12:09:58,552 - INFO - Detected bottle with confidence 0.30633556842803955
+2024-12-09 12:09:58,553 - INFO - Bounding box: 449.02105712890625 0.38616943359375 103.80352783203125 238.09518432617188
+2024-12-09 12:09:58,554 - INFO - Begin tracking objects
+2024-12-09 12:09:58,803 - INFO - Tracking object 1 at 295.5523302464181 86.41094624117258 536.363423674683 310.68554431912617
+2024-12-09 12:09:58,803 - INFO - Tracking object 2 at 131.09287479498613 10.124272958009755 388.42965177640843 250.56259390882227
+2024-12-09 12:09:58,804 - INFO - Tracking object 3 at 1.2928443413765933 272.4713358426115 404.405042051402 476.169042193946
+2024-12-09 12:09:58,804 - INFO - Tracking object 4 at 182.0222036758989 240.85654454191518 357.87187429179767 292.71967321980054
+2024-12-09 12:09:58,805 - INFO - Tracking object 6 at 451.4683837890625 0.538055419921875 551.853271484375 161.80770874023438
+2024-12-09 12:09:58,805 - INFO - Tracking object 7 at 449.02105712890625 0.38616943359375 552.8245849609375 238.48135375976562
+2024-12-09 12:09:58,805 - INFO - Cross line detection: 0
+2024-12-09 12:09:58,805 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:09:58,806 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:58] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:09:58,819 - INFO - Image upload request received
+2024-12-09 12:09:58,821 - INFO - Converting byte array to frame
+2024-12-09 12:09:58,828 - INFO - Byte array converted to frame
+2024-12-09 12:09:58,829 - INFO - Detecting objects
+2024-12-09 12:09:59,656 - INFO - Detection complete
+2024-12-09 12:09:59,657 - INFO - Detected mouse with confidence 0.9152466654777527
+2024-12-09 12:09:59,657 - INFO - Bounding box: 181.61444091796875 241.15545654296875 177.28334045410156 52.30999755859375
+2024-12-09 12:09:59,658 - INFO - Detected bottle with confidence 0.8834734559059143
+2024-12-09 12:09:59,658 - INFO - Bounding box: 278.2698974609375 0.255401611328125 86.68359375 199.83383178710938
+2024-12-09 12:09:59,659 - INFO - Detected laptop with confidence 0.8092020153999329
+2024-12-09 12:09:59,659 - INFO - Bounding box: 0.26068115234375 273.1619873046875 405.276123046875 201.6861572265625
+2024-12-09 12:09:59,661 - INFO - Error: None
+2024-12-09 12:09:59,661 - INFO - 172.17.0.1 - - [09/Dec/2024 12:09:59] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:09:59,674 - INFO - Image upload request received
+2024-12-09 12:09:59,683 - INFO - Converting byte array to frame
+2024-12-09 12:09:59,688 - INFO - Byte array converted to frame
+2024-12-09 12:09:59,689 - INFO - Detecting objects
+2024-12-09 12:10:03,118 - INFO - Detection complete
+2024-12-09 12:10:03,119 - INFO - Detected mouse with confidence 0.957904040813446
+2024-12-09 12:10:03,120 - INFO - Bounding box: 181.60211181640625 240.98974609375 176.29103088378906 51.91229248046875
+2024-12-09 12:10:03,120 - INFO - Detected laptop with confidence 0.7669495344161987
+2024-12-09 12:10:03,121 - INFO - Bounding box: 0.34625244140625 272.43060302734375 405.0987243652344 203.2724609375
+2024-12-09 12:10:03,121 - INFO - Detected cell phone with confidence 0.6261745095252991
+2024-12-09 12:10:03,122 - INFO - Bounding box: 528.8212280273438 0.7818756103515625 106.388427734375 217.18582153320312
+2024-12-09 12:10:03,122 - INFO - Detected bottle with confidence 0.5975586771965027
+2024-12-09 12:10:03,123 - INFO - Bounding box: 528.524169921875 0.0 106.3861083984375 218.02906799316406
+2024-12-09 12:10:03,124 - INFO - Detected cell phone with confidence 0.2708090841770172
+2024-12-09 12:10:03,124 - INFO - Bounding box: 529.3837890625 0.5236968994140625 106.650146484375 139.74058532714844
+2024-12-09 12:10:03,125 - INFO - Begin tracking objects
+2024-12-09 12:10:03,583 - INFO - Tracking object 1 at 299.8903450429368 86.14325310000763 540.9603733909022 310.6590117239583
+2024-12-09 12:10:03,584 - INFO - Tracking object 2 at 119.28990620170214 -3.5020802326629763 380.11489164460244 240.19539685077615
+2024-12-09 12:10:03,584 - INFO - Tracking object 3 at 1.6361399708884221 272.4375227832481 404.1385953591582 475.7737825683861
+2024-12-09 12:10:03,585 - INFO - Tracking object 4 at 181.78902633048858 240.96418297470615 357.79212005768375 292.8695385271463
+2024-12-09 12:10:03,585 - INFO - Tracking object 6 at 527.4171194435362 0.5255955467539479 616.5664141792685 143.11299978208936
+2024-12-09 12:10:03,585 - INFO - Tracking object 7 at 522.8152225422511 0.051063726756211736 619.2521108368163 220.73350247469816
+2024-12-09 12:10:03,586 - INFO - Tracking object 8 at 528.8212280273438 0.7818756103515625 635.2096557617188 217.9676971435547
+2024-12-09 12:10:03,586 - INFO - Cross line detection: 0
+2024-12-09 12:10:03,586 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:03,587 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:03] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:03,593 - INFO - Image upload request received
+2024-12-09 12:10:03,595 - INFO - Converting byte array to frame
+2024-12-09 12:10:03,608 - INFO - Byte array converted to frame
+2024-12-09 12:10:03,608 - INFO - Detecting objects
+2024-12-09 12:10:04,089 - INFO - Detection complete
+2024-12-09 12:10:04,090 - INFO - Detected mouse with confidence 0.9631854295730591
+2024-12-09 12:10:04,090 - INFO - Bounding box: 181.91339111328125 240.44180297851562 176.76513671875 53.19049072265625
+2024-12-09 12:10:04,090 - INFO - Detected bottle with confidence 0.8879567384719849
+2024-12-09 12:10:04,091 - INFO - Bounding box: 205.12890625 0.229583740234375 84.2430419921875 260.0252685546875
+2024-12-09 12:10:04,091 - INFO - Detected laptop with confidence 0.5004568099975586
+2024-12-09 12:10:04,092 - INFO - Bounding box: 0.07476806640625 273.75408935546875 405.51788330078125 201.09222412109375
+2024-12-09 12:10:04,092 - INFO - Detected keyboard with confidence 0.3202038109302521
+2024-12-09 12:10:04,093 - INFO - Bounding box: 0.0 273.3341369628906 177.16802978515625 42.05633544921875
+2024-12-09 12:10:04,094 - INFO - Error: None
+2024-12-09 12:10:04,094 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:04] "POST /img?cam_id=3 HTTP/1.1" 200 -
+2024-12-09 12:10:07,857 - INFO - Detection complete
+2024-12-09 12:10:07,857 - INFO - Detected mouse with confidence 0.958236575126648
+2024-12-09 12:10:07,858 - INFO - Bounding box: 181.82583618164062 240.6890869140625 176.1300048828125 51.88706970214844
+2024-12-09 12:10:07,858 - INFO - Detected laptop with confidence 0.8471105694770813
+2024-12-09 12:10:07,858 - INFO - Bounding box: 0.2613525390625 272.6474914550781 405.36700439453125 201.1002197265625
+2024-12-09 12:10:07,860 - INFO - Begin tracking objects
+2024-12-09 12:10:08,005 - INFO - Tracking object 1 at 304.22835984716517 85.87555995884267 545.5573230994119 310.63247912879035
+2024-12-09 12:10:08,005 - INFO - Tracking object 2 at 107.48693770571552 -17.128433423335707 371.8001314154991 229.82819979273006
+2024-12-09 12:10:08,006 - INFO - Tracking object 3 at 3.212745464853441 272.5876204968084 402.65793200802284 474.2125938856561
+2024-12-09 12:10:08,006 - INFO - Tracking object 4 at 181.8517689249196 240.7755375739187 357.8423365377216 292.6746816820118
+2024-12-09 12:10:08,006 - INFO - Cross line detection: 0
+2024-12-09 12:10:08,006 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:08,007 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:08] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:08,013 - INFO - Image upload request received
+2024-12-09 12:10:08,014 - INFO - Converting byte array to frame
+2024-12-09 12:10:08,020 - INFO - Byte array converted to frame
+2024-12-09 12:10:08,021 - INFO - Detecting objects
+2024-12-09 12:10:12,248 - INFO - Detection complete
+2024-12-09 12:10:12,250 - INFO - Detected mouse with confidence 0.9598458409309387
+2024-12-09 12:10:12,251 - INFO - Bounding box: 181.32965087890625 240.72994995117188 176.54978942871094 51.800048828125
+2024-12-09 12:10:12,253 - INFO - Detected laptop with confidence 0.8172858953475952
+2024-12-09 12:10:12,254 - INFO - Bounding box: 0.29730224609375 272.3131103515625 405.0585632324219 204.24072265625
+2024-12-09 12:10:12,258 - INFO - Begin tracking objects
+2024-12-09 12:10:12,438 - INFO - Tracking object 1 at 308.5663746591031 85.60786681767772 550.1542728002117 310.6059465336225
+2024-12-09 12:10:12,439 - INFO - Tracking object 2 at 95.68396930702627 -30.754786614008438 363.4853710890983 219.46100273468397
+2024-12-09 12:10:12,439 - INFO - Tracking object 3 at 1.445158684068872 272.3979717960681 404.2850329305876 475.72512493546105
+2024-12-09 12:10:12,440 - INFO - Tracking object 4 at 181.75708137047405 240.73905662823998 357.57150103974203 292.5724415480813
+2024-12-09 12:10:12,440 - INFO - Cross line detection: 0
+2024-12-09 12:10:12,440 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:12,441 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:12] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:12,449 - INFO - Image upload request received
+2024-12-09 12:10:12,451 - INFO - Converting byte array to frame
+2024-12-09 12:10:12,458 - INFO - Byte array converted to frame
+2024-12-09 12:10:12,458 - INFO - Detecting objects
+2024-12-09 12:10:17,070 - INFO - Detection complete
+2024-12-09 12:10:17,072 - INFO - Detected mouse with confidence 0.9554787874221802
+2024-12-09 12:10:17,073 - INFO - Bounding box: 181.9603271484375 240.82843017578125 176.20997619628906 51.6968994140625
+2024-12-09 12:10:17,075 - INFO - Detected laptop with confidence 0.8537251949310303
+2024-12-09 12:10:17,076 - INFO - Bounding box: 0.3533935546875 272.68756103515625 404.9561767578125 203.5830078125
+2024-12-09 12:10:17,078 - INFO - Detected laptop with confidence 0.25002387166023254
+2024-12-09 12:10:17,079 - INFO - Bounding box: 165.42745971679688 207.00961303710938 136.7408447265625 66.12521362304688
+2024-12-09 12:10:17,084 - INFO - Begin tracking objects
+2024-12-09 12:10:17,327 - INFO - Tracking object 1 at 312.9043894787506 85.34017367651276 554.7512224933021 310.57941393845454
+2024-12-09 12:10:17,327 - INFO - Tracking object 2 at 83.8810010056344 -44.38113980468117 355.1706106654002 209.09380567663786
+2024-12-09 12:10:17,328 - INFO - Tracking object 3 at 1.2285971976442056 272.59372884359266 404.4580205184387 476.0698937740667
+2024-12-09 12:10:17,329 - INFO - Tracking object 4 at 182.1556193109241 240.796057120627 357.6950161199844 292.5335073377315
+2024-12-09 12:10:17,329 - INFO - Tracking object 9 at 165.42745971679688 207.00961303710938 302.1683044433594 273.13482666015625
+2024-12-09 12:10:17,330 - INFO - Cross line detection: 0
+2024-12-09 12:10:17,330 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:17,331 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:17] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:17,342 - INFO - Image upload request received
+2024-12-09 12:10:17,344 - INFO - Converting byte array to frame
+2024-12-09 12:10:17,350 - INFO - Byte array converted to frame
+2024-12-09 12:10:17,350 - INFO - Detecting objects
+2024-12-09 12:10:21,854 - INFO - Detection complete
+2024-12-09 12:10:21,856 - INFO - Detected mouse with confidence 0.95719313621521
+2024-12-09 12:10:21,857 - INFO - Bounding box: 181.5965576171875 240.85049438476562 176.45452880859375 51.9813232421875
+2024-12-09 12:10:21,858 - INFO - Detected laptop with confidence 0.8169969916343689
+2024-12-09 12:10:21,859 - INFO - Bounding box: 0.38653564453125 272.3431396484375 405.0657958984375 203.26702880859375
+2024-12-09 12:10:21,860 - INFO - Detected cell phone with confidence 0.4352988302707672
+2024-12-09 12:10:21,861 - INFO - Bounding box: 551.3427734375 0.313323974609375 88.4368896484375 192.67019653320312
+2024-12-09 12:10:21,863 - INFO - Begin tracking objects
+2024-12-09 12:10:22,056 - INFO - Tracking object 1 at 317.24240430610774 85.07248053534781 559.348172178683 310.5528813432867
+2024-12-09 12:10:22,057 - INFO - Tracking object 2 at 72.0780328015399 -58.0074929953539 346.8558501444047 198.72660861859174
+2024-12-09 12:10:22,057 - INFO - Tracking object 3 at 1.3672521850788826 272.42737846300065 404.4244935353116 475.7436887421122
+2024-12-09 12:10:22,057 - INFO - Tracking object 4 at 181.80671768903483 240.83240383676204 357.90223335496637 292.7321035666188
+2024-12-09 12:10:22,058 - INFO - Tracking object 10 at 551.3427734375 0.313323974609375 639.7796630859375 192.9835205078125
+2024-12-09 12:10:22,058 - INFO - Cross line detection: 0
+2024-12-09 12:10:22,058 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:22,059 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:22] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:22,073 - INFO - Image upload request received
+2024-12-09 12:10:22,074 - INFO - Converting byte array to frame
+2024-12-09 12:10:22,081 - INFO - Byte array converted to frame
+2024-12-09 12:10:22,081 - INFO - Detecting objects
+2024-12-09 12:10:26,463 - INFO - Detection complete
+2024-12-09 12:10:26,465 - INFO - Detected mouse with confidence 0.9565309286117554
+2024-12-09 12:10:26,466 - INFO - Bounding box: 181.63143920898438 240.8480224609375 176.36883544921875 51.77923583984375
+2024-12-09 12:10:26,467 - INFO - Detected laptop with confidence 0.8316049575805664
+2024-12-09 12:10:26,468 - INFO - Bounding box: 0.2994384765625 273.0301513671875 405.1284484863281 200.71929931640625
+2024-12-09 12:10:26,470 - INFO - Detected bottle with confidence 0.6445242762565613
+2024-12-09 12:10:26,470 - INFO - Bounding box: 430.69073486328125 0.314300537109375 101.71209716796875 276.1512451171875
+2024-12-09 12:10:26,473 - INFO - Begin tracking objects
+2024-12-09 12:10:26,693 - INFO - Tracking object 1 at 321.5804191411745 84.80478739418285 563.945121856354 310.5263487481187
+2024-12-09 12:10:26,693 - INFO - Tracking object 2 at 60.27506469474278 -71.63384618602663 338.5410895261118 188.35941156054565
+2024-12-09 12:10:26,694 - INFO - Tracking object 3 at 2.875576367661637 272.8348077433231 402.8781541461391 474.357582087418
+2024-12-09 12:10:26,694 - INFO - Tracking object 4 at 181.8850485322323 240.84400584458214 357.76212543878955 292.66542449156464
+2024-12-09 12:10:26,694 - INFO - Tracking object 11 at 430.69073486328125 0.314300537109375 532.40283203125 276.4655456542969
+2024-12-09 12:10:26,695 - INFO - Cross line detection: 0
+2024-12-09 12:10:26,695 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:26,696 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:26] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:26,705 - INFO - Image upload request received
+2024-12-09 12:10:26,706 - INFO - Converting byte array to frame
+2024-12-09 12:10:26,712 - INFO - Byte array converted to frame
+2024-12-09 12:10:26,713 - INFO - Detecting objects
+2024-12-09 12:10:31,247 - INFO - Detection complete
+2024-12-09 12:10:31,249 - INFO - Detected mouse with confidence 0.9558736085891724
+2024-12-09 12:10:31,251 - INFO - Bounding box: 181.39794921875 240.777099609375 176.90565490722656 52.00453186035156
+2024-12-09 12:10:31,254 - INFO - Detected laptop with confidence 0.7654589414596558
+2024-12-09 12:10:31,260 - INFO - Bounding box: 0.2572021484375 272.5647888183594 405.80078125 201.71759033203125
+2024-12-09 12:10:31,261 - INFO - Detected bottle with confidence 0.5849528908729553
+2024-12-09 12:10:31,262 - INFO - Bounding box: 354.4029541015625 0.32672119140625 98.6348876953125 280.88275146484375
+2024-12-09 12:10:31,264 - INFO - Begin tracking objects
+2024-12-09 12:10:31,484 - INFO - Tracking object 1 at 325.9184339839509 84.5370942530179 568.5420715263156 310.49981615295087
+2024-12-09 12:10:31,484 - INFO - Tracking object 2 at 48.47209668524306 -85.26019937669936 330.2263288105216 177.99221450249956
+2024-12-09 12:10:31,485 - INFO - Tracking object 3 at 2.8462391200400816 272.6686583612434 403.29198616385423 474.2150232739526
+2024-12-09 12:10:31,485 - INFO - Tracking object 4 at 181.67398250415846 240.80012922004423 357.99902622620573 292.74475655552226
+2024-12-09 12:10:31,485 - INFO - Tracking object 11 at 362.44645609736017 0.325078790838063 465.5765243956022 280.5821765237603
+2024-12-09 12:10:31,486 - INFO - Cross line detection: 0
+2024-12-09 12:10:31,486 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:31,487 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:31] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:41,392 - INFO - Image upload request received
+2024-12-09 12:10:41,394 - INFO - Converting byte array to frame
+2024-12-09 12:10:41,401 - INFO - Byte array converted to frame
+2024-12-09 12:10:41,401 - INFO - Detecting objects
+2024-12-09 12:10:46,025 - INFO - Detection complete
+2024-12-09 12:10:46,028 - INFO - Detected mouse with confidence 0.9544476270675659
+2024-12-09 12:10:46,029 - INFO - Bounding box: 181.57363891601562 240.86279296875 176.6732177734375 51.91552734375
+2024-12-09 12:10:46,031 - INFO - Detected laptop with confidence 0.7755016684532166
+2024-12-09 12:10:46,032 - INFO - Bounding box: 0.33062744140625 272.4014892578125 405.04534912109375 203.75384521484375
+2024-12-09 12:10:46,034 - INFO - Detected cell phone with confidence 0.406316876411438
+2024-12-09 12:10:46,035 - INFO - Bounding box: 451.4683837890625 0.538055419921875 100.3848876953125 161.2696533203125
+2024-12-09 12:10:46,037 - INFO - Detected bottle with confidence 0.30633556842803955
+2024-12-09 12:10:46,037 - INFO - Bounding box: 449.02105712890625 0.38616943359375 103.80352783203125 238.09518432617188
+2024-12-09 12:10:46,041 - INFO - Begin tracking objects
+2024-12-09 12:10:46,343 - INFO - Tracking object 1 at 330.2564488344368 84.26940111185294 573.1390211885675 310.4732835577829
+2024-12-09 12:10:46,343 - INFO - Tracking object 2 at 36.66912877304068 -98.88655256737209 321.91156799763394 167.62501744445345
+2024-12-09 12:10:46,343 - INFO - Tracking object 3 at 1.3184561803872725 272.4957392628668 404.55001829642083 475.43598070031175
+2024-12-09 12:10:46,344 - INFO - Tracking object 4 at 181.72652068847992 240.84137743692594 358.03731504207974 292.7716788974712
+2024-12-09 12:10:46,344 - INFO - Tracking object 12 at 449.02105712890625 0.38616943359375 552.8245849609375 238.48135375976562
+2024-12-09 12:10:46,345 - INFO - Tracking object 13 at 451.4683837890625 0.538055419921875 551.853271484375 161.80770874023438
+2024-12-09 12:10:46,345 - INFO - Cross line detection: 0
+2024-12-09 12:10:46,345 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:46,346 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:46] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:46,351 - INFO - Image upload request received
+2024-12-09 12:10:46,354 - INFO - Converting byte array to frame
+2024-12-09 12:10:46,367 - INFO - Byte array converted to frame
+2024-12-09 12:10:46,368 - INFO - Detecting objects
+2024-12-09 12:10:50,669 - INFO - Detection complete
+2024-12-09 12:10:50,669 - INFO - Detected mouse with confidence 0.957904040813446
+2024-12-09 12:10:50,670 - INFO - Bounding box: 181.60211181640625 240.98974609375 176.29103088378906 51.91229248046875
+2024-12-09 12:10:50,670 - INFO - Detected laptop with confidence 0.7669495344161987
+2024-12-09 12:10:50,671 - INFO - Bounding box: 0.34625244140625 272.43060302734375 405.0987243652344 203.2724609375
+2024-12-09 12:10:50,671 - INFO - Detected cell phone with confidence 0.6261745095252991
+2024-12-09 12:10:50,672 - INFO - Bounding box: 528.8212280273438 0.7818756103515625 106.388427734375 217.18582153320312
+2024-12-09 12:10:50,672 - INFO - Detected bottle with confidence 0.5975586771965027
+2024-12-09 12:10:50,673 - INFO - Bounding box: 528.524169921875 0.0 106.3861083984375 218.02906799316406
+2024-12-09 12:10:50,673 - INFO - Detected cell phone with confidence 0.2708090841770172
+2024-12-09 12:10:50,674 - INFO - Bounding box: 529.3837890625 0.5236968994140625 106.650146484375 139.74058532714844
+2024-12-09 12:10:50,675 - INFO - Begin tracking objects
+2024-12-09 12:10:51,016 - INFO - Tracking object 1 at 334.59446369263236 84.00170797068799 577.7359708431098 310.44675096261506
+2024-12-09 12:10:51,017 - INFO - Tracking object 2 at 24.86616095813571 -112.51290575804482 313.59680708744895 157.25782038640733
+2024-12-09 12:10:51,017 - INFO - Tracking object 3 at 1.0448468552521035 272.4504995306773 404.77810389484233 475.5946941434098
+2024-12-09 12:10:51,017 - INFO - Tracking object 4 at 181.64721728365885 240.94182763943377 357.93364506838805 292.86397727953613
+2024-12-09 12:10:51,018 - INFO - Tracking object 12 at 522.8152225422511 0.051063726756211736 619.2521108368163 220.73350247469816
+2024-12-09 12:10:51,018 - INFO - Tracking object 13 at 527.4171194435362 0.5255955467539479 616.5664141792685 143.11299978208936
+2024-12-09 12:10:51,018 - INFO - Tracking object 14 at 528.8212280273438 0.7818756103515625 635.2096557617188 217.9676971435547
+2024-12-09 12:10:51,019 - INFO - Cross line detection: 0
+2024-12-09 12:10:51,019 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:51,019 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:51] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:51,028 - INFO - Image upload request received
+2024-12-09 12:10:51,029 - INFO - Converting byte array to frame
+2024-12-09 12:10:51,035 - INFO - Byte array converted to frame
+2024-12-09 12:10:51,036 - INFO - Detecting objects
+2024-12-09 12:10:55,415 - INFO - Detection complete
+2024-12-09 12:10:55,416 - INFO - Detected mouse with confidence 0.958236575126648
+2024-12-09 12:10:55,416 - INFO - Bounding box: 181.82583618164062 240.6890869140625 176.1300048828125 51.88706970214844
+2024-12-09 12:10:55,417 - INFO - Detected laptop with confidence 0.8471105694770813
+2024-12-09 12:10:55,418 - INFO - Bounding box: 0.2613525390625 272.6474914550781 405.36700439453125 201.1002197265625
+2024-12-09 12:10:55,419 - INFO - Begin tracking objects
+2024-12-09 12:10:55,560 - INFO - Tracking object 1 at 338.9324785585375 83.73401482952303 582.3329204899426 310.4202183674471
+2024-12-09 12:10:55,561 - INFO - Tracking object 2 at 13.063193240528108 -126.13925894871755 305.28204607996656 146.89062332836124
+2024-12-09 12:10:55,561 - INFO - Tracking object 3 at 2.1951880499086656 272.57850240174724 403.6756803414167 474.3518644348664
+2024-12-09 12:10:55,561 - INFO - Tracking object 4 at 181.745007425933 240.77842457620451 357.95927149848455 292.68022680761277
+2024-12-09 12:10:55,562 - INFO - Cross line detection: 0
+2024-12-09 12:10:55,562 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:10:55,562 - INFO - 172.17.0.1 - - [09/Dec/2024 12:10:55] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:10:55,568 - INFO - Image upload request received
+2024-12-09 12:10:55,569 - INFO - Converting byte array to frame
+2024-12-09 12:10:55,575 - INFO - Byte array converted to frame
+2024-12-09 12:10:55,576 - INFO - Detecting objects
+2024-12-09 12:11:00,161 - INFO - Detection complete
+2024-12-09 12:11:00,163 - INFO - Detected mouse with confidence 0.9598458409309387
+2024-12-09 12:11:00,165 - INFO - Bounding box: 181.32965087890625 240.72994995117188 176.54978942871094 51.800048828125
+2024-12-09 12:11:00,166 - INFO - Detected laptop with confidence 0.8172858953475952
+2024-12-09 12:11:00,167 - INFO - Bounding box: 0.29730224609375 272.3131103515625 405.0585632324219 204.24072265625
+2024-12-09 12:11:00,171 - INFO - Begin tracking objects
+2024-12-09 12:11:00,333 - INFO - Tracking object 1 at 343.2704934321523 83.46632168835808 586.9298701290658 310.39368577227924
+2024-12-09 12:11:00,334 - INFO - Tracking object 2 at 1.2602256202178808 -139.7656121393903 296.9672849751868 136.52342627031513
+2024-12-09 12:11:00,334 - INFO - Tracking object 3 at 0.6047019105077709 272.4036003913046 405.125730570889 475.76147462303834
+2024-12-09 12:11:00,334 - INFO - Tracking object 4 at 181.66106834975855 240.7439681482347 357.7092265323149 292.5798462089251
+2024-12-09 12:11:00,335 - INFO - Cross line detection: 0
+2024-12-09 12:11:00,335 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:00,336 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:00] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:00,354 - INFO - Image upload request received
+2024-12-09 12:11:00,358 - INFO - Converting byte array to frame
+2024-12-09 12:11:00,368 - INFO - Byte array converted to frame
+2024-12-09 12:11:00,368 - INFO - Detecting objects
+2024-12-09 12:11:04,802 - INFO - Detection complete
+2024-12-09 12:11:04,803 - INFO - Detected mouse with confidence 0.9554787874221802
+2024-12-09 12:11:04,803 - INFO - Bounding box: 181.9603271484375 240.82843017578125 176.20997619628906 51.6968994140625
+2024-12-09 12:11:04,804 - INFO - Detected laptop with confidence 0.8537251949310303
+2024-12-09 12:11:04,804 - INFO - Bounding box: 0.3533935546875 272.68756103515625 404.9561767578125 203.5830078125
+2024-12-09 12:11:04,805 - INFO - Detected laptop with confidence 0.25002387166023254
+2024-12-09 12:11:04,806 - INFO - Bounding box: 165.42745971679688 207.00961303710938 136.7408447265625 66.12521362304688
+2024-12-09 12:11:04,807 - INFO - Begin tracking objects
+2024-12-09 12:11:04,987 - INFO - Tracking object 1 at 347.6085083134767 83.19862854719312 591.5268197604793 310.3671531771113
+2024-12-09 12:11:04,987 - INFO - Tracking object 2 at -10.542741902794972 -153.39196533006304 288.6525237731097 126.15622921226901
+2024-12-09 12:11:04,987 - INFO - Tracking object 3 at 0.4245852346128345 272.58681604155566 405.25970335695047 476.1031344592866
+2024-12-09 12:11:04,988 - INFO - Tracking object 4 at 182.03660714053993 240.79682957644567 357.8220966295546 292.5392089348734
+2024-12-09 12:11:04,988 - INFO - Tracking object 15 at 165.42745971679688 207.00961303710938 302.1683044433594 273.13482666015625
+2024-12-09 12:11:04,988 - INFO - Cross line detection: 0
+2024-12-09 12:11:04,989 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:04,990 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:04] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:04,996 - INFO - Image upload request received
+2024-12-09 12:11:04,998 - INFO - Converting byte array to frame
+2024-12-09 12:11:05,004 - INFO - Byte array converted to frame
+2024-12-09 12:11:05,004 - INFO - Detecting objects
+2024-12-09 12:11:09,463 - INFO - Detection complete
+2024-12-09 12:11:09,464 - INFO - Detected mouse with confidence 0.95719313621521
+2024-12-09 12:11:09,464 - INFO - Bounding box: 181.5965576171875 240.85049438476562 176.45452880859375 51.9813232421875
+2024-12-09 12:11:09,465 - INFO - Detected laptop with confidence 0.8169969916343689
+2024-12-09 12:11:09,465 - INFO - Bounding box: 0.38653564453125 272.3431396484375 405.0657958984375 203.26702880859375
+2024-12-09 12:11:09,466 - INFO - Detected cell phone with confidence 0.4352988302707672
+2024-12-09 12:11:09,467 - INFO - Bounding box: 551.3427734375 0.313323974609375 88.4368896484375 192.67019653320312
+2024-12-09 12:11:09,468 - INFO - Begin tracking objects
+2024-12-09 12:11:09,706 - INFO - Tracking object 1 at 351.94652320251066 82.93093540602817 596.1237693841832 310.3406205819434
+2024-12-09 12:11:09,707 - INFO - Tracking object 2 at -22.345709328510452 -167.01831852073576 280.33776247373515 115.78903215422292
+2024-12-09 12:11:09,707 - INFO - Tracking object 3 at 0.5924930994043223 272.4279888251816 405.19125489043165 475.7933219527908
+2024-12-09 12:11:09,708 - INFO - Tracking object 4 at 181.71312554202422 240.83167757004762 358.00960339720774 292.7281571087815
+2024-12-09 12:11:09,708 - INFO - Tracking object 16 at 551.3427734375 0.313323974609375 639.7796630859375 192.9835205078125
+2024-12-09 12:11:09,708 - INFO - Cross line detection: 0
+2024-12-09 12:11:09,709 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:09,709 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:09] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:09,714 - INFO - Image upload request received
+2024-12-09 12:11:09,716 - INFO - Converting byte array to frame
+2024-12-09 12:11:09,722 - INFO - Byte array converted to frame
+2024-12-09 12:11:09,722 - INFO - Detecting objects
+2024-12-09 12:11:14,377 - INFO - Detection complete
+2024-12-09 12:11:14,379 - INFO - Detected mouse with confidence 0.9565309286117554
+2024-12-09 12:11:14,379 - INFO - Bounding box: 181.63143920898438 240.8480224609375 176.36883544921875 51.77923583984375
+2024-12-09 12:11:14,381 - INFO - Detected laptop with confidence 0.8316049575805664
+2024-12-09 12:11:14,382 - INFO - Bounding box: 0.2994384765625 273.0301513671875 405.1284484863281 200.71929931640625
+2024-12-09 12:11:14,384 - INFO - Detected bottle with confidence 0.6445242762565613
+2024-12-09 12:11:14,384 - INFO - Bounding box: 430.69073486328125 0.314300537109375 101.71209716796875 276.1512451171875
+2024-12-09 12:11:14,387 - INFO - Begin tracking objects
+2024-12-09 12:11:14,623 - INFO - Tracking object 1 at 356.2845380992543 82.66324226486321 600.7207190001775 310.31408798677546
+2024-12-09 12:11:14,624 - INFO - Tracking object 2 at -34.14867665692856 -180.6446717114085 272.02300107706327 105.4218350961768
+2024-12-09 12:11:14,624 - INFO - Tracking object 3 at 2.053200634640831 272.8235100508913 403.6943231616551 474.4411040731691
+2024-12-09 12:11:14,624 - INFO - Tracking object 4 at 181.78979015925455 240.84316867507755 357.8710321751284 292.6639118016034
+2024-12-09 12:11:14,625 - INFO - Tracking object 17 at 430.69073486328125 0.314300537109375 532.40283203125 276.4655456542969
+2024-12-09 12:11:14,625 - INFO - Cross line detection: 0
+2024-12-09 12:11:14,625 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:14,626 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:14] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:14,636 - INFO - Image upload request received
+2024-12-09 12:11:14,638 - INFO - Converting byte array to frame
+2024-12-09 12:11:14,644 - INFO - Byte array converted to frame
+2024-12-09 12:11:14,645 - INFO - Detecting objects
+2024-12-09 12:11:19,167 - INFO - Detection complete
+2024-12-09 12:11:19,169 - INFO - Detected mouse with confidence 0.9558736085891724
+2024-12-09 12:11:19,171 - INFO - Bounding box: 181.39794921875 240.777099609375 176.90565490722656 52.00453186035156
+2024-12-09 12:11:19,173 - INFO - Detected laptop with confidence 0.7654589414596558
+2024-12-09 12:11:19,175 - INFO - Bounding box: 0.2572021484375 272.5647888183594 405.80078125 201.71759033203125
+2024-12-09 12:11:19,177 - INFO - Detected bottle with confidence 0.5849528908729553
+2024-12-09 12:11:19,178 - INFO - Bounding box: 354.4029541015625 0.32672119140625 98.6348876953125 280.88275146484375
+2024-12-09 12:11:19,182 - INFO - Begin tracking objects
+2024-12-09 12:11:19,394 - INFO - Tracking object 1 at 360.6225530037075 82.39554912369826 605.3176686084622 310.2875553916076
+2024-12-09 12:11:19,395 - INFO - Tracking object 2 at -45.95164388804926 -194.27102490208125 263.708239583094 95.05463803813069
+2024-12-09 12:11:19,396 - INFO - Tracking object 3 at 2.0579361064363297 272.66344770786293 404.0666305703977 474.2861067070644
+2024-12-09 12:11:19,396 - INFO - Tracking object 4 at 181.58743555577635 240.8003950752281 358.0965578790897 292.741756422694
+2024-12-09 12:11:19,396 - INFO - Tracking object 17 at 362.44645609736017 0.325078790838063 465.5765243956022 280.5821765237603
+2024-12-09 12:11:19,397 - INFO - Cross line detection: 0
+2024-12-09 12:11:19,397 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:19,398 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:19] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:19,422 - INFO - Image upload request received
+2024-12-09 12:11:19,423 - INFO - Converting byte array to frame
+2024-12-09 12:11:19,430 - INFO - Byte array converted to frame
+2024-12-09 12:11:19,431 - INFO - Detecting objects
+2024-12-09 12:11:23,851 - INFO - Detection complete
+2024-12-09 12:11:23,852 - INFO - Detected mouse with confidence 0.9152466654777527
+2024-12-09 12:11:23,852 - INFO - Bounding box: 181.61444091796875 241.15545654296875 177.28334045410156 52.30999755859375
+2024-12-09 12:11:23,853 - INFO - Detected bottle with confidence 0.8834734559059143
+2024-12-09 12:11:23,853 - INFO - Bounding box: 278.2698974609375 0.255401611328125 86.68359375 199.83383178710938
+2024-12-09 12:11:23,854 - INFO - Detected laptop with confidence 0.8092020153999329
+2024-12-09 12:11:23,855 - INFO - Bounding box: 0.26068115234375 273.1619873046875 405.276123046875 201.6861572265625
+2024-12-09 12:11:23,856 - INFO - Begin tracking objects
+2024-12-09 12:11:24,024 - INFO - Tracking object 1 at 364.9605679158703 82.1278559825333 609.9146182090374 310.26102279643965
+2024-12-09 12:11:24,025 - INFO - Tracking object 2 at -57.75461102187262 -207.89737809275397 255.39347799182735 84.6874409800846
+2024-12-09 12:11:24,025 - INFO - Tracking object 3 at 1.8258583012841143 272.9984082420543 404.09614190488355 474.60871058397595
+2024-12-09 12:11:24,025 - INFO - Tracking object 4 at 181.46141177553 241.034600244943 358.76811133053286 293.2234703356988
+2024-12-09 12:11:24,026 - INFO - Tracking object 18 at 278.2698974609375 0.255401611328125 364.9534912109375 200.0892333984375
+2024-12-09 12:11:24,026 - INFO - Cross line detection: 0
+2024-12-09 12:11:24,026 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:24,027 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:24] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:24,042 - INFO - Image upload request received
+2024-12-09 12:11:24,044 - INFO - Converting byte array to frame
+2024-12-09 12:11:24,050 - INFO - Byte array converted to frame
+2024-12-09 12:11:24,051 - INFO - Detecting objects
+2024-12-09 12:11:28,392 - INFO - Detection complete
+2024-12-09 12:11:28,393 - INFO - Detected mouse with confidence 0.9631854295730591
+2024-12-09 12:11:28,393 - INFO - Bounding box: 181.91339111328125 240.44180297851562 176.76513671875 53.19049072265625
+2024-12-09 12:11:28,393 - INFO - Detected bottle with confidence 0.8879567384719849
+2024-12-09 12:11:28,394 - INFO - Bounding box: 205.12890625 0.229583740234375 84.2430419921875 260.0252685546875
+2024-12-09 12:11:28,394 - INFO - Detected laptop with confidence 0.5004568099975586
+2024-12-09 12:11:28,395 - INFO - Bounding box: 0.07476806640625 273.75408935546875 405.51788330078125 201.09222412109375
+2024-12-09 12:11:28,395 - INFO - Detected keyboard with confidence 0.3202038109302521
+2024-12-09 12:11:28,395 - INFO - Bounding box: 0.0 273.3341369628906 177.16802978515625 42.05633544921875
+2024-12-09 12:11:28,396 - INFO - Begin tracking objects
+2024-12-09 12:11:28,632 - INFO - Tracking object 1 at 369.29858283574265 81.86016284136835 614.5115678019029 310.2344902012718
+2024-12-09 12:11:28,633 - INFO - Tracking object 2 at -69.55757805839858 -221.52373128342668 247.07871630326332 74.32024392203851
+2024-12-09 12:11:28,633 - INFO - Tracking object 3 at 1.9382517845922393 273.5158826686777 403.81995673317596 474.73417836819107
+2024-12-09 12:11:28,634 - INFO - Tracking object 4 at 180.6252240157442 240.65143214827765 359.86238816453664 293.51452462475584
+2024-12-09 12:11:28,634 - INFO - Tracking object 19 at 0.0 273.3341369628906 177.16802978515625 315.3904724121094
+2024-12-09 12:11:28,635 - INFO - Tracking object 20 at 205.12890625 0.229583740234375 289.3719482421875 260.2548522949219
+2024-12-09 12:11:28,635 - INFO - Cross line detection: 0
+2024-12-09 12:11:28,635 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:28,636 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:28] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:28,642 - INFO - Image upload request received
+2024-12-09 12:11:28,644 - INFO - Converting byte array to frame
+2024-12-09 12:11:28,651 - INFO - Byte array converted to frame
+2024-12-09 12:11:28,652 - INFO - Detecting objects
+2024-12-09 12:11:33,048 - INFO - Detection complete
+2024-12-09 12:11:33,050 - INFO - Detected mouse with confidence 0.9543153047561646
+2024-12-09 12:11:33,050 - INFO - Bounding box: 181.53717041015625 240.78298950195312 176.96876525878906 52.4678955078125
+2024-12-09 12:11:33,051 - INFO - Detected bottle with confidence 0.7796457409858704
+2024-12-09 12:11:33,051 - INFO - Bounding box: 242.57266235351562 0.3009033203125 87.43585205078125 245.65927124023438
+2024-12-09 12:11:33,052 - INFO - Detected laptop with confidence 0.6195515394210815
+2024-12-09 12:11:33,053 - INFO - Bounding box: 0.180755615234375 272.7467346191406 405.4507751464844 202.75341796875
+2024-12-09 12:11:33,054 - INFO - Begin tracking objects
+2024-12-09 12:11:33,248 - INFO - Tracking object 1 at 373.6365977633247 81.5924697002034 619.1085173870588 310.20795760610383
+2024-12-09 12:11:33,248 - INFO - Tracking object 2 at -81.36054499762716 -235.15008447409943 238.7639545174019 63.9530468639924
+2024-12-09 12:11:33,249 - INFO - Tracking object 3 at 0.974261129035483 273.0409215905663 404.81782486903757 475.2182682074154
+2024-12-09 12:11:33,249 - INFO - Tracking object 4 at 180.91296843085155 240.73073932724307 359.3090004926227 293.37115384931667
+2024-12-09 12:11:33,250 - INFO - Tracking object 20 at 240.94863200539692 0.2914726320377099 321.3078740396056 247.8503798807948
+2024-12-09 12:11:33,250 - INFO - Cross line detection: 0
+2024-12-09 12:11:33,250 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:33,251 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:33] "POST /img HTTP/1.1" 200 -
+2024-12-09 12:11:33,263 - INFO - Image upload request received
+2024-12-09 12:11:33,265 - INFO - Converting byte array to frame
+2024-12-09 12:11:33,271 - INFO - Byte array converted to frame
+2024-12-09 12:11:33,272 - INFO - Detecting objects
+2024-12-09 12:11:37,970 - INFO - Detection complete
+2024-12-09 12:11:37,971 - INFO - Detected mouse with confidence 0.9547491073608398
+2024-12-09 12:11:37,972 - INFO - Bounding box: 181.41256713867188 240.91717529296875 176.495849609375 51.88726806640625
+2024-12-09 12:11:37,973 - INFO - Detected bottle with confidence 0.7979520559310913
+2024-12-09 12:11:37,974 - INFO - Bounding box: 365.3941955566406 0.0549468994140625 94.025634765625 173.22335815429688
+2024-12-09 12:11:37,975 - INFO - Detected laptop with confidence 0.7317770719528198
+2024-12-09 12:11:37,975 - INFO - Bounding box: 0.288818359375 272.0736999511719 404.83929443359375 201.21234130859375
+2024-12-09 12:11:37,976 - INFO - Detected keyboard with confidence 0.37066352367401123
+2024-12-09 12:11:37,977 - INFO - Bounding box: 0.2553863525390625 273.74456787109375 147.9202880859375 40.6143798828125
+2024-12-09 12:11:37,978 - INFO - Begin tracking objects
+2024-12-09 12:11:38,252 - INFO - Tracking object 1 at 377.9746126986163 81.32477655903844 623.705466964505 310.181425010936
+2024-12-09 12:11:38,253 - INFO - Tracking object 2 at -93.16351183955837 -248.77643766477217 230.44919263424313 53.58584980594628
+2024-12-09 12:11:38,253 - INFO - Tracking object 3 at 1.3660541530898342 272.4145483299702 404.1776798041294 473.93904106238983
+2024-12-09 12:11:38,254 - INFO - Tracking object 4 at 181.39336764427583 240.85053010272824 358.24688758587934 293.017805502128
+2024-12-09 12:11:38,254 - INFO - Tracking object 21 at 0.2553863525390625 273.74456787109375 148.17567443847656 314.35894775390625
+2024-12-09 12:11:38,254 - INFO - Tracking object 22 at 365.3941955566406 0.0549468994140625 459.4198303222656 173.27830505371094
+2024-12-09 12:11:38,254 - INFO - Cross line detection: 0
+2024-12-09 12:11:38,255 - INFO - Image uploaded, 0 changes detected
+2024-12-09 12:11:38,255 - INFO - 172.17.0.1 - - [09/Dec/2024 12:11:38] "POST /img HTTP/1.1" 200 -
